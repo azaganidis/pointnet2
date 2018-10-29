@@ -68,10 +68,12 @@ def sample_and_group_all(xyz, points, use_xyz=True):
     Note:
         Equivalent to sample_and_group with npoint=1, radius=inf, use (0,0,0) as the centroid
     '''
-    batch_size = xyz.get_shape()[0].value
-    nsample = xyz.get_shape()[1].value
-    new_xyz = tf.constant(np.tile(np.array([0,0,0]).reshape((1,1,3)), (batch_size,1,1)),dtype=tf.float32) # (batch_size, 1, 3)
-    idx = tf.constant(np.tile(np.array(range(nsample)).reshape((1,1,nsample)), (batch_size,1,1)))
+    batch_size = tf.shape(xyz)[0]
+    nsample = tf.shape(xyz)[1]
+    #new_xyz = tf.constant(np.tile(np.zeros(3).reshape((1,1,3)), (batch_size,1,1)),dtype=tf.float32) # (batch_size, 1, 3)
+    new_xyz=tf.zeros([batch_size, 1, 3])
+    #idx = tf.constant(np.tile(np.array(range(nsample)).reshape((1,1,nsample)), (batch_size,1,1)))
+    idx = tf.reshape(tf.tile(tf.reshape(tf.range(nsample), [1,1,nsample]), [batch_size,1,nsample]), [batch_size, 1, nsample])
     grouped_xyz = tf.reshape(xyz, (batch_size, 1, nsample, 3)) # (batch_size, npoint=1, nsample, 3)
     if points is not None:
         if use_xyz:
@@ -211,7 +213,7 @@ def pointnet_fp_module(xyz1, xyz2, points1, points2, mlp, is_training, bn_decay,
         dist, idx = three_nn(xyz1, xyz2)
         dist = tf.maximum(dist, 1e-10)
         norm = tf.reduce_sum((1.0/dist),axis=2,keep_dims=True)
-        norm = tf.tile(norm,[1,1,3])
+        norm = tf.tile(norm,[1,1,xyz1.shape[2]])
         weight = (1.0/dist) / norm
         interpolated_points = three_interpolate(points2, idx, weight)
 
@@ -227,3 +229,9 @@ def pointnet_fp_module(xyz1, xyz2, points1, points2, mlp, is_training, bn_decay,
                                          scope='conv_%d'%(i), bn_decay=bn_decay)
         new_points1 = tf.squeeze(new_points1, [2]) # B,ndataset1,mlp[-1]
         return new_points1
+
+def pointnet_ae_module(inC, is_training,bn_decay,scope, numHidden=10):
+    outN = inC.shape[-1]
+    encoder = tf_util.conv1d(inC, numHidden, 1, padding='VALID', bn=True, is_training=is_training, scope=scope+'E', bn_decay=bn_decay)
+    decoder = tf_util.conv1d(encoder,outN , 1, padding='VALID', bn=True, is_training=is_training, scope=scope+'D', bn_decay=bn_decay)
+    return encoder, decoder
