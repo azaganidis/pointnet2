@@ -18,7 +18,7 @@ REGISTER_OP("QueryBallPoint")
     .Output("idx: int32")
     .Output("pts_cnt: int32")
     .SetShapeFn([](::tensorflow::shape_inference::InferenceContext* c) {
-        ::tensorflow::shape_inference::ShapeHandle dims2; // batch_size * npoint * 3
+        ::tensorflow::shape_inference::ShapeHandle dims2; // batch_size * npoint * n_channels
         c->WithRank(c->input(1), 3, &dims2);
         int nsample;
         TF_RETURN_IF_ERROR(c->GetAttr("nsample", &nsample));
@@ -63,7 +63,7 @@ REGISTER_OP("GroupPointGrad")
     });
 
 
-void queryBallPointLauncher(int b, int n, int m, float radius, int nsample, const float *xyz1, const float *xyz2, int *idx, int *pts_cnt);
+void queryBallPointLauncher(int b, int n, int c, int m, float radius, int nsample, const float *xyz1, const float *xyz2, int *idx, int *pts_cnt);
 class QueryBallPointGpuOp : public OpKernel {
     public:
         explicit QueryBallPointGpuOp(OpKernelConstruction* context) : OpKernel(context) {
@@ -76,12 +76,13 @@ class QueryBallPointGpuOp : public OpKernel {
 
         void Compute(OpKernelContext* context) override {
             const Tensor& xyz1_tensor = context->input(0);
-            OP_REQUIRES(context, xyz1_tensor.dims()==3 && xyz1_tensor.shape().dim_size(2)==3, errors::InvalidArgument("QueryBallPoint expects (batch_size, ndataset, 3) xyz1 shape."));
+            OP_REQUIRES(context, xyz1_tensor.dims()==3, errors::InvalidArgument("QueryBallPoint expects (batch_size, ndataset, c) xyz1 shape."));
             int b = xyz1_tensor.shape().dim_size(0);
             int n = xyz1_tensor.shape().dim_size(1);
+            int c = xyz1_tensor.shape().dim_size(2);
 
             const Tensor& xyz2_tensor = context->input(1);
-            OP_REQUIRES(context, xyz2_tensor.dims()==3 && xyz2_tensor.shape().dim_size(2)==3, errors::InvalidArgument("QueryBallPoint expects (batch_size, npoint, 3) xyz2 shape."));
+            OP_REQUIRES(context, xyz2_tensor.dims()==3 && xyz2_tensor.shape().dim_size(2)==c, errors::InvalidArgument("QueryBallPoint expects (batch_size, npoint, c) xyz2 shape."));
             int m = xyz2_tensor.shape().dim_size(1);
 
             Tensor *idx_tensor = nullptr;
@@ -97,7 +98,7 @@ class QueryBallPointGpuOp : public OpKernel {
             int *idx = &(idx_flat(0));
             auto pts_cnt_flat = pts_cnt_tensor->flat<int>();
             int *pts_cnt = &(pts_cnt_flat(0));
-            queryBallPointLauncher(b,n,m,radius_,nsample_,xyz1,xyz2,idx,pts_cnt);
+            queryBallPointLauncher(b,n,c,m,radius_,nsample_,xyz1,xyz2,idx,pts_cnt);
         }
     private:
         float radius_;
