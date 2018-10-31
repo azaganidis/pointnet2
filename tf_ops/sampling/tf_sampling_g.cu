@@ -102,14 +102,14 @@ __global__ void binarysearchKernel(int b,int n,int m,const float * __restrict__ 
     }
   }
 }
-__global__ void farthestpointsamplingKernel(int b,int n,int m,const float * __restrict__ dataset,float * __restrict__ temp,int * __restrict__ idxs){
+#define BufferSize 3072
+__global__ void farthestpointsamplingKernel(int b,int n,int c,int m,const float * __restrict__ dataset,float * __restrict__ temp,int * __restrict__ idxs){
   if (m<=0)
     return;
   const int BlockSize=512;
   __shared__ float dists[BlockSize];
   __shared__ int dists_i[BlockSize];
-  const int BufferSize=3072;
-  __shared__ float buf[BufferSize*3];
+  extern __shared__ float buf[];
   for (int i=blockIdx.x;i<b;i+=gridDim.x){
     int old=0;
     if (threadIdx.x==0)
@@ -117,29 +117,20 @@ __global__ void farthestpointsamplingKernel(int b,int n,int m,const float * __re
     for (int j=threadIdx.x;j<n;j+=blockDim.x){
       temp[blockIdx.x*n+j]=1e38;
     }
-    for (int j=threadIdx.x;j<min(BufferSize,n)*3;j+=blockDim.x){
-      buf[j]=dataset[i*n*3+j];
+    for (int j=threadIdx.x;j<min(BufferSize,n)*c;j+=blockDim.x){
+      buf[j]=dataset[i*n*c+j];
     }
     __syncthreads();
     for (int j=1;j<m;j++){
       int besti=0;
       float best=-1;
-      float x1=dataset[i*n*3+old*3+0];
-      float y1=dataset[i*n*3+old*3+1];
-      float z1=dataset[i*n*3+old*3+2];
+      int Ind1=i*n*c+old*c;
       for (int k=threadIdx.x;k<n;k+=blockDim.x){
         float td=temp[blockIdx.x*n+k];
-        float x2,y2,z2;
-        if (k<BufferSize){
-          x2=buf[k*3+0];
-          y2=buf[k*3+1];
-          z2=buf[k*3+2];
-        }else{
-          x2=dataset[i*n*3+k*3+0];
-          y2=dataset[i*n*3+k*3+1];
-          z2=dataset[i*n*3+k*3+2];
-        }
-        float d=(x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)+(z2-z1)*(z2-z1);
+        int Ind2=k<BufferSize?k*c:i*n*c+k*c;
+        float d=0;
+        for(int iter_c=0;iter_c<c;iter_c++)
+            d+=(dataset[Ind2+iter_c]-dataset[Ind1+iter_c])*(dataset[Ind2+iter_c]-dataset[Ind1+iter_c]);///Will abs work the same and be faster?
         float d2=min(d,td);
         if (d2!=td)
           temp[blockIdx.x*n+k]=d2;
@@ -169,13 +160,12 @@ __global__ void farthestpointsamplingKernel(int b,int n,int m,const float * __re
   }
 }
 
-__global__ void gatherpointKernel(int b,int n,int m,const float * __restrict__ inp,const int * __restrict__ idx,float * __restrict__ out){
+__global__ void gatherpointKernel(int b,int n,int c,int m,const float * __restrict__ inp,const int * __restrict__ idx,float * __restrict__ out){
   for (int i=blockIdx.x;i<b;i+=gridDim.x){
     for (int j=blockIdx.y*blockDim.x+threadIdx.x;j<m;j+=blockDim.x*gridDim.y){
       int a=idx[i*m+j];
-      out[(i*m+j)*3+0]=inp[(i*n+a)*3+0];
-      out[(i*m+j)*3+1]=inp[(i*n+a)*3+1];
-      out[(i*m+j)*3+2]=inp[(i*n+a)*3+2];
+      for(int c_index=0;c_index<c;c_index++)
+          out[(i*m+j)*c+c_index]=inp[(i*n+a)*c+c_index];
     }
   }
 }
@@ -200,11 +190,11 @@ void probsampleLauncher(int b,int n,int m,const float * inp_p,const float * inp_
   binarysearchKernel<<<dim3(32,8,1),512>>>(b,n,m,temp,inp_r,out);
 }
 //require 32*n working space
-void farthestpointsamplingLauncher(int b,int n,int m,const float * inp,float * temp,int * out){
-  farthestpointsamplingKernel<<<32,512>>>(b,n,m,inp,temp,out);
+void farthestpointsamplingLauncher(int b,int n,int c,int m,const float * inp,float * temp,int * out){
+  farthestpointsamplingKernel<<<32,512,BufferSize*c>>>(b,n,c,m,inp,temp,out);
 }
-void gatherpointLauncher(int b,int n,int m,const float * inp,const int * idx,float * out){
-  gatherpointKernel<<<dim3(2,8,1),512>>>(b,n,m,inp,idx,out);
+void gatherpointLauncher(int b,int n,int c,int m,const float * inp,const int * idx,float * out){
+  gatherpointKernel<<<dim3(2,8,1),512>>>(b,n,c,m,inp,idx,out);
 }
 void scatteraddpointLauncher(int b,int n,int m,const float * out_g,const int * idx,float * inp_g){
   scatteraddpointKernel<<<dim3(2,8,1),512>>>(b,n,m,out_g,idx,inp_g);
