@@ -1,5 +1,7 @@
-# TF1.2
-g++ -std=c++11 tf_interpolate.cpp -o tf_interpolate_so.so -shared -fPIC -I /usr/local/lib/python2.7/dist-packages/tensorflow/include -I /usr/local/cuda-8.0/include -lcudart -L /usr/local/cuda-8.0/lib64/ -O2 -D_GLIBCXX_USE_CXX11_ABI=0
+#/bin/bash
+TF_LFLAGS=( $(python -c 'import tensorflow as tf; print(" ".join(tf.sysconfig.get_link_flags()))') )
+TF_CFLAGS=( $(python -c 'import tensorflow as tf; print(" ".join(tf.sysconfig.get_compile_flags()))') )
 
-# TF1.4
-#g++ -std=c++11 tf_interpolate.cpp -o tf_interpolate_so.so -shared -fPIC -I /usr/local/lib/python2.7/dist-packages/tensorflow/include -I /usr/local/cuda-8.0/include -I /usr/local/lib/python2.7/dist-packages/tensorflow/include/external/nsync/public -lcudart -L /usr/local/cuda-8.0/lib64/ -L/usr/local/lib/python2.7/dist-packages/tensorflow -ltensorflow_framework -O2 -D_GLIBCXX_USE_CXX11_ABI=0
+g++ -std=c++11 -shared tf_interpolate.cpp -o tf_interpolate_so.so -I/home/anestis/.local/lib64/python2.7/site-packages/tensorflow/include/external/nsync/public/ -I/opt/cuda/include -fPIC -L/opt/cuda/lib64 -lcudart ${TF_CFLAGS[@]} ${TF_LFLAGS[@]} -O2 -ltensorflow_framework
+
+

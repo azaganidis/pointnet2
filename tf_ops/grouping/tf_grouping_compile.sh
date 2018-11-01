@@ -1,8 +1,9 @@
 #/bin/bash
-/opt/cuda/bin/nvcc tf_grouping_g.cu -o tf_grouping_g.cu.o -c -O2 -DGOOGLE_CUDA=1 -x cu -Xcompiler -fPIC
+TF_LFLAGS=( $(python -c 'import tensorflow as tf; print(" ".join(tf.sysconfig.get_link_flags()))') )
+TF_CFLAGS=( $(python -c 'import tensorflow as tf; print(" ".join(tf.sysconfig.get_compile_flags()))') )
 
-# TF1.2
-#g++ -std=c++11 tf_grouping.cpp tf_grouping_g.cu.o -o tf_grouping_so.so -shared -fPIC -I /usr/local/lib/python2.7/dist-packages/tensorflow/include -I /opt/cuda/include -lcudart -L /opt/cuda/lib64/ -O2 -D_GLIBCXX_USE_CXX11_ABI=0
+/opt/cuda/bin/nvcc -std=c++11 -c -o tf_grouping_g.cu.o tf_grouping_g.cu -I/home/anestis/.local/lib64/python2.7/site-packages/tensorflow/include -D_GLIBCXX_USE_CXX11_ABI=1 -DGOOGLE_CUDA=1 -x cu -Xcompiler -fPIC
 
-# TF1.4
-g++ -std=c++11 tf_grouping.cpp tf_grouping_g.cu.o -o tf_grouping_so.so -shared -fPIC -I /home/anestis/.local/lib64/python2.7/site-packages/tensorflow/include -I /opt/cuda/include -I /home/anestis/.local/lib64/python2.7/site-packages/tensorflow/include/external/nsync/public -lcudart -L /opt/cuda/lib64/ -L/home/anestis/.local/lib64/python2.7/site-packages/tensorflow -ltensorflow_framework -O2 -D_GLIBCXX_USE_CXX11_ABI=0
+g++ -std=c++11 -shared tf_grouping_g.cu.o tf_grouping.cpp -o tf_grouping_so.so -I/home/anestis/.local/lib64/python2.7/site-packages/tensorflow/include/external/nsync/public/ -I/opt/cuda/include -fPIC -L/opt/cuda/lib64 -lcudart ${TF_CFLAGS[@]} ${TF_LFLAGS[@]} -O2 -ltensorflow_framework
+
+
