@@ -191,7 +191,7 @@ void probsampleLauncher(int b,int n,int m,const float * inp_p,const float * inp_
 }
 //require 32*n working space
 void farthestpointsamplingLauncher(int b,int n,int c,int m,const float * inp,float * temp,int * out){
-  farthestpointsamplingKernel<<<32,512,BufferSize*c>>>(b,n,c,m,inp,temp,out);
+  farthestpointsamplingKernel<<<32,512,BufferSize*c*sizeof(float)>>>(b,n,c,m,inp,temp,out);
 }
 void gatherpointLauncher(int b,int n,int c,int m,const float * inp,const int * idx,float * out){
   gatherpointKernel<<<dim3(2,8,1),512>>>(b,n,c,m,inp,idx,out);
