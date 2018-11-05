@@ -156,8 +156,11 @@ def train():
         test_writer = tf.summary.FileWriter(os.path.join(LOG_DIR, 'test'), sess.graph)
 
         # Init variables
-        init = tf.global_variables_initializer()
-        sess.run(init)
+        if os.path.exists(os.path.join(LOG_DIR, "model.ckpt.index")):
+            saver.restore(sess,os.path.join(LOG_DIR, "model.ckpt"))
+        else:
+            init = tf.global_variables_initializer()
+            sess.run(init)
 
         ops = {'pointclouds_pl': pointclouds_pl,
                'labels_pl': labels_pl,

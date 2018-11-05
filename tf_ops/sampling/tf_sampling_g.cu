@@ -102,14 +102,15 @@ __global__ void binarysearchKernel(int b,int n,int m,const float * __restrict__ 
     }
   }
 }
-#define BufferSize 3072
 __global__ void farthestpointsamplingKernel(int b,int n,int c,int m,const float * __restrict__ dataset,float * __restrict__ temp,int * __restrict__ idxs){
   if (m<=0)
     return;
   const int BlockSize=512;
   __shared__ float dists[BlockSize];
   __shared__ int dists_i[BlockSize];
-  extern __shared__ float buf[];
+  const int BufferSize=9216;
+  __shared__ float buf[BufferSize];
+  int BufLim=BufferSize/c;
   for (int i=blockIdx.x;i<b;i+=gridDim.x){
     int old=0;
     if (threadIdx.x==0)
@@ -117,7 +118,7 @@ __global__ void farthestpointsamplingKernel(int b,int n,int c,int m,const float 
     for (int j=threadIdx.x;j<n;j+=blockDim.x){
       temp[blockIdx.x*n+j]=1e38;
     }
-    for (int j=threadIdx.x;j<min(BufferSize,n)*c;j+=blockDim.x){
+    for (int j=threadIdx.x;j<min(BufLim,n)*c;j+=blockDim.x){
       buf[j]=dataset[i*n*c+j];
     }
     __syncthreads();
@@ -127,10 +128,10 @@ __global__ void farthestpointsamplingKernel(int b,int n,int c,int m,const float 
       int Ind1=i*n*c+old*c;
       for (int k=threadIdx.x;k<n;k+=blockDim.x){
         float td=temp[blockIdx.x*n+k];
-        int Ind2=k<BufferSize?k*c:i*n*c+k*c;
+        auto In2=k<BufLim?&buf[k*c]:&dataset[i*n*c+k*c];
         float d=0;
-        for(int iter_c=0;iter_c<c;iter_c++)
-            d+=(dataset[Ind2+iter_c]-dataset[Ind1+iter_c])*(dataset[Ind2+iter_c]-dataset[Ind1+iter_c]);///Will abs work the same and be faster?
+        for(int ci=0;ci<c;ci++)
+            d+=(In2[ci]-dataset[Ind1+ci])*(In2[ci]-dataset[Ind1+ci]);///Will abs work the same and be faster?
         float d2=min(d,td);
         if (d2!=td)
           temp[blockIdx.x*n+k]=d2;
@@ -163,20 +164,21 @@ __global__ void farthestpointsamplingKernel(int b,int n,int c,int m,const float 
 __global__ void gatherpointKernel(int b,int n,int c,int m,const float * __restrict__ inp,const int * __restrict__ idx,float * __restrict__ out){
   for (int i=blockIdx.x;i<b;i+=gridDim.x){
     for (int j=blockIdx.y*blockDim.x+threadIdx.x;j<m;j+=blockDim.x*gridDim.y){
+        if(i*m+j<b*m*c){
       int a=idx[i*m+j];
-      for(int c_index=0;c_index<c;c_index++)
-          out[(i*m+j)*c+c_index]=inp[(i*n+a)*c+c_index];
+      for(int ic=0;ic<c;ic++)
+          out[(i*m+j)*c+ic]=inp[(i*n+a)*c+ic];
+        }
     }
   }
 }
 
-__global__ void scatteraddpointKernel(int b,int n,int m,const float * __restrict__ out_g,const int * __restrict__ idx,float * __restrict__ inp_g){
+__global__ void scatteraddpointKernel(int b,int n,int c,int m,const float * __restrict__ out_g,const int * __restrict__ idx,float * __restrict__ inp_g){
   for (int i=blockIdx.x;i<b;i+=gridDim.x){
     for (int j=blockIdx.y*blockDim.x+threadIdx.x;j<m;j+=blockDim.x*gridDim.y){
       int a=idx[i*m+j];
-      atomicAdd(&inp_g[(i*n+a)*3+0],out_g[(i*m+j)*3+0]);
-      atomicAdd(&inp_g[(i*n+a)*3+1],out_g[(i*m+j)*3+1]);
-      atomicAdd(&inp_g[(i*n+a)*3+2],out_g[(i*m+j)*3+2]);
+      for(int ci=0;ci<c;ci++)
+          atomicAdd(&inp_g[(i*n+a)*c+ci],out_g[(i*m+j)*c+ci]);
     }
   }
 }
@@ -191,12 +193,12 @@ void probsampleLauncher(int b,int n,int m,const float * inp_p,const float * inp_
 }
 //require 32*n working space
 void farthestpointsamplingLauncher(int b,int n,int c,int m,const float * inp,float * temp,int * out){
-  farthestpointsamplingKernel<<<32,512,BufferSize*c*sizeof(float)>>>(b,n,c,m,inp,temp,out);
+  farthestpointsamplingKernel<<<32,512>>>(b,n,c,m,inp,temp,out);
 }
 void gatherpointLauncher(int b,int n,int c,int m,const float * inp,const int * idx,float * out){
   gatherpointKernel<<<dim3(2,8,1),512>>>(b,n,c,m,inp,idx,out);
 }
-void scatteraddpointLauncher(int b,int n,int m,const float * out_g,const int * idx,float * inp_g){
-  scatteraddpointKernel<<<dim3(2,8,1),512>>>(b,n,m,out_g,idx,inp_g);
+void scatteraddpointLauncher(int b,int n,int c,int m,const float * out_g,const int * idx,float * inp_g){
+  scatteraddpointKernel<<<dim3(2,8,1),512>>>(b,n,c,m,out_g,idx,inp_g);
 }
 
