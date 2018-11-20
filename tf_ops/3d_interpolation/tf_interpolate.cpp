@@ -55,22 +55,20 @@ static double get_time(){
 }
 
 // Find three nearest neigbors with square distance
-// input: xyz1 (b,n,3), xyz2(b,m,3)
+// input: xyz1 (b,n,c), xyz2(b,m,c)
 // output: dist (b,n,3), idx (b,n,3)
-void threenn_cpu(int b, int n, int m, const float *xyz1, const float *xyz2, float *dist, int *idx) {
+void threenn_cpu(int b, int n, int c, int m, const float *xyz1, const float *xyz2, float *dist, int *idx) {
      for (int i=0;i<b;++i) {
         for (int j=0;j<n;++j) {
-	    float x1=xyz1[j*3+0];
-	    float y1=xyz1[j*3+1];
-	    float z1=xyz1[j*3+2];
+            auto *p1=&xyz1[j*c];
             double best1=1e40; double best2=1e40; double best3=1e40;
             int besti1=0; int besti2=0; int besti3=0;
             for (int k=0;k<m;++k) {
-                float x2=xyz2[k*3+0];
-	        float y2=xyz2[k*3+1];
-	        float z2=xyz2[k*3+2];
+                auto *p2=&xyz2[k*c];
 		//float d=max(sqrtf((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)+(z2-z1)*(z2-z1)),1e-20f);
-		double d=(x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)+(z2-z1)*(z2-z1);
+                double d=0;
+                for(int ic=0;ic<c;ic++)
+                    d+=(p2[ic]-p1[ic])*(p2[ic]-p1[ic]);
                 if (d<best1) {
                     best3=best2;
                     besti3=besti2;
@@ -95,8 +93,8 @@ void threenn_cpu(int b, int n, int m, const float *xyz1, const float *xyz2, floa
             dist[j*3+2]=best3;
             idx[j*3+2]=besti3;
         } 
-        xyz1+=n*3;
-        xyz2+=m*3;
+        xyz1+=n*c;
+        xyz2+=m*c;
         dist+=n*3;
         idx+=n*3;
     }
@@ -160,12 +158,13 @@ class ThreeNNOp : public OpKernel {
 
         void Compute(OpKernelContext* context) override {
             const Tensor& xyz1_tensor = context->input(0);
-            OP_REQUIRES(context, xyz1_tensor.dims()==3 && xyz1_tensor.shape().dim_size(2)==3, errors::InvalidArgument("ThreeNN expects (b,n,3) xyz1 shape."));
+            OP_REQUIRES(context, xyz1_tensor.dims()==3, errors::InvalidArgument("ThreeNN expects (b,n,c) xyz1 shape."));
             int b = xyz1_tensor.shape().dim_size(0);
             int n = xyz1_tensor.shape().dim_size(1);
+            int c = xyz1_tensor.shape().dim_size(2);
 
             const Tensor& xyz2_tensor = context->input(1);
-            OP_REQUIRES(context, xyz2_tensor.dims()==3 && xyz2_tensor.shape().dim_size(2)==3, errors::InvalidArgument("ThreeNN expects (b,m,3) xyz2 shape."));
+            OP_REQUIRES(context, xyz2_tensor.dims()==3 && xyz2_tensor.shape().dim_size(2)==c, errors::InvalidArgument("ThreeNN expects (b,m,c) xyz2 shape."));
             int m = xyz2_tensor.shape().dim_size(1);
 
             Tensor *dist_tensor = nullptr;
@@ -181,7 +180,7 @@ class ThreeNNOp : public OpKernel {
             float *dist = &(dist_flat(0));
             auto idx_flat = idx_tensor->flat<int>();
             int *idx = &(idx_flat(0));
-            threenn_cpu(b,n,m,xyz1,xyz2,dist,idx);
+            threenn_cpu(b,n,c,m,xyz1,xyz2,dist,idx);
         }
 };
 REGISTER_KERNEL_BUILDER(Name("ThreeNN").Device(DEVICE_CPU), ThreeNNOp);

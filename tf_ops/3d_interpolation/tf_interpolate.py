@@ -8,8 +8,8 @@ interpolate_module=tf.load_op_library(os.path.join(BASE_DIR, 'tf_interpolate_so.
 def three_nn(xyz1, xyz2):
     '''
     Input:
-        xyz1: (b,n,3) float32 array, unknown points
-        xyz2: (b,m,3) float32 array, known points
+        xyz1: (b,n,c) float32 array, unknown points
+        xyz2: (b,m,c) float32 array, known points
     Output:
         dist: (b,n,3) float32 array, distances to known points
         idx: (b,n,3) int32 array, indices to known points
