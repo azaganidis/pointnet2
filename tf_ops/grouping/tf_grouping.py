@@ -10,8 +10,8 @@ def query_ball_point(radius, nsample, xyz1, xyz2):
     Input:
         radius: float32, ball search radius
         nsample: int32, number of points selected in each ball region
-        xyz1: (batch_size, ndataset, 3) float32 array, input points
-        xyz2: (batch_size, npoint, 3) float32 array, query points
+        xyz1: (batch_size, ndataset, c) float32 array, input points
+        xyz2: (batch_size, npoint, c) float32 array, query points
     Output:
         idx: (batch_size, npoint, nsample) int32 array, indices to input points
         pts_cnt: (batch_size, npoint) int32 array, number of unique points in each local region

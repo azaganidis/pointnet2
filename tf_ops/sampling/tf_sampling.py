@@ -54,6 +54,7 @@ input:
 returns:
     batch_size * npoint         int32
     '''
+    print inp, npoint
     return sampling_module.farthest_point_sample(inp, npoint)
 ops.NoGradient('FarthestPointSample')
     

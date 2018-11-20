@@ -36,7 +36,6 @@ def sample_and_group(npoint, radius, nsample, xyz, points, knn=False, use_xyz=Tr
         grouped_xyz: (batch_size, npoint, nsample, 3) TF tensor, normalized point XYZs
             (subtracted by seed point XYZ) in local regions
     '''
-
     new_xyz = gather_point(xyz, farthest_point_sample(npoint, xyz)) # (batch_size, npoint, 3)
     if knn:
         _,idx = knn_point(nsample, xyz, new_xyz)
@@ -68,13 +67,12 @@ def sample_and_group_all(xyz, points, use_xyz=True):
     Note:
         Equivalent to sample_and_group with npoint=1, radius=inf, use (0,0,0) as the centroid
     '''
-    batch_size = tf.shape(xyz)[0]
-    nsample = tf.shape(xyz)[1]
-    #new_xyz = tf.constant(np.tile(np.zeros(3).reshape((1,1,3)), (batch_size,1,1)),dtype=tf.float32) # (batch_size, 1, 3)
-    new_xyz=tf.zeros([batch_size, 1, 3])
-    #idx = tf.constant(np.tile(np.array(range(nsample)).reshape((1,1,nsample)), (batch_size,1,1)))
-    idx = tf.reshape(tf.tile(tf.reshape(tf.range(nsample), [1,1,nsample]), [batch_size,1,nsample]), [batch_size, 1, nsample])
-    grouped_xyz = tf.reshape(xyz, (batch_size, 1, nsample, 3)) # (batch_size, npoint=1, nsample, 3)
+    batch_size = xyz.get_shape()[0].value
+    nsample = xyz.get_shape()[1].value
+    nchannel = xyz.get_shape()[2].value
+    new_xyz=tf.zeros((batch_size,1,nchannel))
+    idx = tf.constant(np.tile(np.array(range(nsample)).reshape((1,1,nsample)), (batch_size,1,1)))
+    grouped_xyz=tf.expand_dims(xyz,1) # (batch_size, npoint=1, nsample, nchannel)
     if points is not None:
         if use_xyz:
             new_points = tf.concat([xyz, points], axis=2) # (batch_size, 16, 259)

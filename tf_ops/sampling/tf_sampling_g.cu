@@ -102,14 +102,15 @@ __global__ void binarysearchKernel(int b,int n,int m,const float * __restrict__ 
     }
   }
 }
-__global__ void farthestpointsamplingKernel(int b,int n,int m,const float * __restrict__ dataset,float * __restrict__ temp,int * __restrict__ idxs){
+__global__ void farthestpointsamplingKernel(int b,int n,int c,int m,const float * __restrict__ dataset,float * __restrict__ temp,int * __restrict__ idxs){
   if (m<=0)
     return;
   const int BlockSize=512;
   __shared__ float dists[BlockSize];
   __shared__ int dists_i[BlockSize];
-  const int BufferSize=3072;
-  __shared__ float buf[BufferSize*3];
+  const int BufferSize=9216;
+  __shared__ float buf[BufferSize];
+  int BufLim=BufferSize/c;
   for (int i=blockIdx.x;i<b;i+=gridDim.x){
     int old=0;
     if (threadIdx.x==0)
@@ -117,29 +118,20 @@ __global__ void farthestpointsamplingKernel(int b,int n,int m,const float * __re
     for (int j=threadIdx.x;j<n;j+=blockDim.x){
       temp[blockIdx.x*n+j]=1e38;
     }
-    for (int j=threadIdx.x;j<min(BufferSize,n)*3;j+=blockDim.x){
-      buf[j]=dataset[i*n*3+j];
+    for (int j=threadIdx.x;j<min(BufLim,n)*c;j+=blockDim.x){
+      buf[j]=dataset[i*n*c+j];
     }
     __syncthreads();
     for (int j=1;j<m;j++){
       int besti=0;
       float best=-1;
-      float x1=dataset[i*n*3+old*3+0];
-      float y1=dataset[i*n*3+old*3+1];
-      float z1=dataset[i*n*3+old*3+2];
+      int Ind1=i*n*c+old*c;
       for (int k=threadIdx.x;k<n;k+=blockDim.x){
         float td=temp[blockIdx.x*n+k];
-        float x2,y2,z2;
-        if (k<BufferSize){
-          x2=buf[k*3+0];
-          y2=buf[k*3+1];
-          z2=buf[k*3+2];
-        }else{
-          x2=dataset[i*n*3+k*3+0];
-          y2=dataset[i*n*3+k*3+1];
-          z2=dataset[i*n*3+k*3+2];
-        }
-        float d=(x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)+(z2-z1)*(z2-z1);
+        auto In2=k<BufLim?&buf[k*c]:&dataset[i*n*c+k*c];
+        float d=0;
+        for(int ci=0;ci<c;ci++)
+            d+=(In2[ci]-dataset[Ind1+ci])*(In2[ci]-dataset[Ind1+ci]);///Will abs work the same and be faster?
         float d2=min(d,td);
         if (d2!=td)
           temp[blockIdx.x*n+k]=d2;
@@ -169,24 +161,24 @@ __global__ void farthestpointsamplingKernel(int b,int n,int m,const float * __re
   }
 }
 
-__global__ void gatherpointKernel(int b,int n,int m,const float * __restrict__ inp,const int * __restrict__ idx,float * __restrict__ out){
+__global__ void gatherpointKernel(int b,int n,int c,int m,const float * __restrict__ inp,const int * __restrict__ idx,float * __restrict__ out){
   for (int i=blockIdx.x;i<b;i+=gridDim.x){
     for (int j=blockIdx.y*blockDim.x+threadIdx.x;j<m;j+=blockDim.x*gridDim.y){
+        if(i*m+j<b*m*c){
       int a=idx[i*m+j];
-      out[(i*m+j)*3+0]=inp[(i*n+a)*3+0];
-      out[(i*m+j)*3+1]=inp[(i*n+a)*3+1];
-      out[(i*m+j)*3+2]=inp[(i*n+a)*3+2];
+      for(int ic=0;ic<c;ic++)
+          out[(i*m+j)*c+ic]=inp[(i*n+a)*c+ic];
+        }
     }
   }
 }
 
-__global__ void scatteraddpointKernel(int b,int n,int m,const float * __restrict__ out_g,const int * __restrict__ idx,float * __restrict__ inp_g){
+__global__ void scatteraddpointKernel(int b,int n,int c,int m,const float * __restrict__ out_g,const int * __restrict__ idx,float * __restrict__ inp_g){
   for (int i=blockIdx.x;i<b;i+=gridDim.x){
     for (int j=blockIdx.y*blockDim.x+threadIdx.x;j<m;j+=blockDim.x*gridDim.y){
       int a=idx[i*m+j];
-      atomicAdd(&inp_g[(i*n+a)*3+0],out_g[(i*m+j)*3+0]);
-      atomicAdd(&inp_g[(i*n+a)*3+1],out_g[(i*m+j)*3+1]);
-      atomicAdd(&inp_g[(i*n+a)*3+2],out_g[(i*m+j)*3+2]);
+      for(int ci=0;ci<c;ci++)
+          atomicAdd(&inp_g[(i*n+a)*c+ci],out_g[(i*m+j)*c+ci]);
     }
   }
 }
@@ -200,13 +192,13 @@ void probsampleLauncher(int b,int n,int m,const float * inp_p,const float * inp_
   binarysearchKernel<<<dim3(32,8,1),512>>>(b,n,m,temp,inp_r,out);
 }
 //require 32*n working space
-void farthestpointsamplingLauncher(int b,int n,int m,const float * inp,float * temp,int * out){
-  farthestpointsamplingKernel<<<32,512>>>(b,n,m,inp,temp,out);
+void farthestpointsamplingLauncher(int b,int n,int c,int m,const float * inp,float * temp,int * out){
+  farthestpointsamplingKernel<<<32,512>>>(b,n,c,m,inp,temp,out);
 }
-void gatherpointLauncher(int b,int n,int m,const float * inp,const int * idx,float * out){
-  gatherpointKernel<<<dim3(2,8,1),512>>>(b,n,m,inp,idx,out);
+void gatherpointLauncher(int b,int n,int c,int m,const float * inp,const int * idx,float * out){
+  gatherpointKernel<<<dim3(2,8,1),512>>>(b,n,c,m,inp,idx,out);
 }
-void scatteraddpointLauncher(int b,int n,int m,const float * out_g,const int * idx,float * inp_g){
-  scatteraddpointKernel<<<dim3(2,8,1),512>>>(b,n,m,out_g,idx,inp_g);
+void scatteraddpointLauncher(int b,int n,int c,int m,const float * out_g,const int * idx,float * inp_g){
+  scatteraddpointKernel<<<dim3(2,8,1),512>>>(b,n,c,m,out_g,idx,inp_g);
 }
 

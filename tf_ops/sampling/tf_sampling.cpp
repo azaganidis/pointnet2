@@ -91,7 +91,7 @@ class ProbSampleGpuOp: public OpKernel{
 };
 REGISTER_KERNEL_BUILDER(Name("ProbSample").Device(DEVICE_GPU), ProbSampleGpuOp);
 
-void farthestpointsamplingLauncher(int b,int n,int m,const float * inp,float * temp,int * out);
+void farthestpointsamplingLauncher(int b,int n,int c,int m,const float * inp,float * temp,int * out);
 class FarthestPointSampleGpuOp: public OpKernel{
   public:
     explicit FarthestPointSampleGpuOp(OpKernelConstruction* context):OpKernel(context) {
@@ -102,9 +102,10 @@ class FarthestPointSampleGpuOp: public OpKernel{
       int m = npoint_;
 
       const Tensor& inp_tensor=context->input(0);
-      OP_REQUIRES(context,inp_tensor.dims()==3 && inp_tensor.shape().dim_size(2)==3,errors::InvalidArgument("FarthestPointSample expects (batch_size,num_points,3) inp shape"));
+      OP_REQUIRES(context,inp_tensor.dims()==3,errors::InvalidArgument("FarthestPointSample expects (batch_size,num_points,channel_size) inp shape"));
       int b=inp_tensor.shape().dim_size(0);
       int n=inp_tensor.shape().dim_size(1);
+      int c=inp_tensor.shape().dim_size(2);
       auto inp_flat=inp_tensor.flat<float>();
       const float * inp=&(inp_flat(0));
       Tensor * out_tensor;
@@ -115,22 +116,23 @@ class FarthestPointSampleGpuOp: public OpKernel{
       OP_REQUIRES_OK(context,context->allocate_temp(DataTypeToEnum<float>::value,TensorShape{32,n},&temp_tensor));
       auto temp_flat=temp_tensor.flat<float>();
       float * temp=&(temp_flat(0));
-      farthestpointsamplingLauncher(b,n,m,inp,temp,out);
+      farthestpointsamplingLauncher(b,n,c,m,inp,temp,out);
     }
     private:
         int npoint_;
 };
 REGISTER_KERNEL_BUILDER(Name("FarthestPointSample").Device(DEVICE_GPU),FarthestPointSampleGpuOp);
 
-void gatherpointLauncher(int b,int n,int m,const float * inp,const int * idx,float * out);
+void gatherpointLauncher(int b,int n,int c,int m,const float * inp,const int * idx,float * out);
 class GatherPointGpuOp: public OpKernel{
   public:
     explicit GatherPointGpuOp(OpKernelConstruction * context):OpKernel(context){}
     void Compute(OpKernelContext * context)override{
       const Tensor& inp_tensor=context->input(0);
-      OP_REQUIRES(context,inp_tensor.dims()==3 && inp_tensor.shape().dim_size(2)==3,errors::InvalidArgument("GatherPoint expects (batch_size,num_points,3) inp shape"));
+      OP_REQUIRES(context,inp_tensor.dims()==3,errors::InvalidArgument("GatherPoint expects (batch_size,num_points,channel_size) inp shape"));
       int b=inp_tensor.shape().dim_size(0);
       int n=inp_tensor.shape().dim_size(1);
+      int c=inp_tensor.shape().dim_size(2);
       const Tensor& idx_tensor=context->input(1);
       OP_REQUIRES(context,idx_tensor.dims()==2 && idx_tensor.shape().dim_size(0)==b,errors::InvalidArgument("GatherPoint expects (batch_size,num_result) idx shape"));
       int m=idx_tensor.shape().dim_size(1);
@@ -139,23 +141,24 @@ class GatherPointGpuOp: public OpKernel{
       auto idx_flat=idx_tensor.flat<int>();
       const int * idx=&(idx_flat(0));
       Tensor * out_tensor=NULL;
-      OP_REQUIRES_OK(context,context->allocate_output(0,TensorShape{b,m,3},&out_tensor));
+      OP_REQUIRES_OK(context,context->allocate_output(0,TensorShape{b,m,c},&out_tensor));
       auto out_flat=out_tensor->flat<float>();
       float * out=&(out_flat(0));
-      gatherpointLauncher(b,n,m,inp,idx,out);
+      gatherpointLauncher(b,n,c,m,inp,idx,out);
     }
 };
 REGISTER_KERNEL_BUILDER(Name("GatherPoint").Device(DEVICE_GPU),GatherPointGpuOp);
 
-void scatteraddpointLauncher(int b,int n,int m,const float * out_g,const int * idx,float * inp_g);
+void scatteraddpointLauncher(int b,int n,int c,int m,const float * out_g,const int * idx,float * inp_g);
 class GatherPointGradGpuOp: public OpKernel{
   public:
     explicit GatherPointGradGpuOp(OpKernelConstruction * context):OpKernel(context){}
     void Compute(OpKernelContext * context)override{
       const Tensor& inp_tensor=context->input(0);
-      OP_REQUIRES(context,inp_tensor.dims()==3 && inp_tensor.shape().dim_size(2)==3,errors::InvalidArgument("GatherPointGradGpuOp expects (batch_size,num_points,3) inp"));
+      OP_REQUIRES(context,inp_tensor.dims()==3,errors::InvalidArgument("GatherPointGradGpuOp expects (batch_size,num_points,n_channels) inp"));
       int b=inp_tensor.shape().dim_size(0);
       int n=inp_tensor.shape().dim_size(1);
+      int c=inp_tensor.shape().dim_size(2);
       const Tensor& idx_tensor=context->input(1);
       OP_REQUIRES(context,idx_tensor.dims()==2 && idx_tensor.shape().dim_size(0)==b,errors::InvalidArgument("GatherPointGradGpuOp expects (batch_size,num_result) idx shape"));
       int m=idx_tensor.shape().dim_size(1);
@@ -164,15 +167,15 @@ class GatherPointGradGpuOp: public OpKernel{
       auto idx_flat=idx_tensor.flat<int>();
       const int * idx=&(idx_flat(0));
       const Tensor& out_g_tensor=context->input(2);
-      OP_REQUIRES(context,out_g_tensor.dims()==3 && out_g_tensor.shape().dim_size(0)==b && out_g_tensor.shape().dim_size(1)==m && out_g_tensor.shape().dim_size(2)==3,errors::InvalidArgument("GatherPointGradGpuOp expects (batch_size,num_result,3) out_g shape"));
+      OP_REQUIRES(context,out_g_tensor.dims()==3 && out_g_tensor.shape().dim_size(0)==b && out_g_tensor.shape().dim_size(1)==m && out_g_tensor.shape().dim_size(2)==c,errors::InvalidArgument("GatherPointGradGpuOp expects (batch_size,num_result,n_channels) out_g shape"));
       auto out_g_flat=out_g_tensor.flat<float>();
       const float * out_g=&(out_g_flat(0));
       Tensor * inp_g_tensor=NULL;
-      OP_REQUIRES_OK(context,context->allocate_output(0,TensorShape{b,n,3},&inp_g_tensor));
+      OP_REQUIRES_OK(context,context->allocate_output(0,TensorShape{b,n,c},&inp_g_tensor));
       auto inp_g_flat=inp_g_tensor->flat<float>();
       float * inp_g=&(inp_g_flat(0));
-      cudaMemset(inp_g,0,b*n*3*4);
-      scatteraddpointLauncher(b,n,m,out_g,idx,inp_g);
+      cudaMemset(inp_g,0,b*n*c*4);
+      scatteraddpointLauncher(b,n,c,m,out_g,idx,inp_g);
     }
 };
 REGISTER_KERNEL_BUILDER(Name("GatherPointGrad").Device(DEVICE_GPU),GatherPointGradGpuOp);
