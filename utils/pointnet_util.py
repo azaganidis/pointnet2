@@ -150,7 +150,7 @@ def pointnet_sa_module(xyz, points, npoint, radius, nsample, mlp, mlp2, group_al
                                             data_format=data_format) 
             if use_nchw: new_points = tf.transpose(new_points, [0,2,3,1])
 
-        new_points = tf.squeeze(new_points, [2]) # (batch_size, npoints, mlp2[-1])
+        new_points = tf.squeeze(new_points, [2], name='points_out') # (batch_size, npoints, mlp2[-1])
         return new_xyz, new_points, idx
 
 def pointnet_sa_module_msg(xyz, points, npoint, radius_list, nsample_list, mlp_list, is_training, bn_decay, scope, bn=True, use_xyz=True, use_nchw=False):
@@ -195,6 +195,21 @@ def pointnet_sa_module_msg(xyz, points, npoint, radius_list, nsample_list, mlp_l
         new_points_concat = tf.concat(new_points_list, axis=-1)
         return new_xyz, new_points_concat
 
+def three_nn_gpu(xyz1,xyz2):
+    s1=tf.shape(xyz1)
+    s2=tf.shape(xyz2)
+    xyz1=tf.reshape(xyz1, (s1[0],s1[1],1, -1))
+    xyz2=tf.reshape(xyz2, (s2[0],1, s2[1], -1))
+    dist = xyz2-xyz1
+    dist=dist*dist
+    dist=tf.reduce_sum(dist, -1)
+    if dist.shape[-1]==1:
+        dist=tf.tile(dist, (1,1,3))
+    elif dist.shape[-1]<3:
+        print "NOT IMPLEMENTED!!!"
+        return "NOT IMPLEMENTED!!!"
+    dist, idx=tf.nn.top_k(-dist, k=3)
+    return dist, idx
  
 def pointnet_fp_module(xyz1, xyz2, points1, points2, mlp, is_training, bn_decay, scope, bn=True):
     ''' PointNet Feature Propogation (FP) Module
@@ -208,10 +223,11 @@ def pointnet_fp_module(xyz1, xyz2, points1, points2, mlp, is_training, bn_decay,
             new_points: (batch_size, ndataset1, mlp[-1]) TF tensor
     '''
     with tf.variable_scope(scope) as sc:
-        dist, idx = three_nn(xyz1, xyz2)
+        #dist, idx = three_nn(xyz1, xyz2)
+        dist, idx = three_nn_gpu(xyz1, xyz2)
         dist = tf.maximum(dist, 1e-10)
         norm = tf.reduce_sum((1.0/dist),axis=2,keep_dims=True)
-        norm = tf.tile(norm,[1,1,xyz1.shape[2]])
+        norm = tf.tile(norm,[1,1,3])
         weight = (1.0/dist) / norm
         interpolated_points = three_interpolate(points2, idx, weight)
 
