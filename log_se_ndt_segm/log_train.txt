@@ -1,702 +1,2010 @@
 Namespace(batch_size=8, decay_rate=0.7, decay_step=20000, gpu=0, input_dim=[15000, 4, 1], learning_rate=0.001, log_dir='log_se_ndt_segm', max_epoch=251, model='se_ndt_segm', momentum=0.9, normal=False, optimizer='adam', output_dim=8)
-pid: 1411
+pid: 9753
 **** EPOCH 000 ****
-2018-12-10 15:19:56.936396
-2018-12-10 15:20:34.404085
+2018-12-10 16:56:29.126024
+2018-12-10 16:57:06.535847
 ---- EPOCH 000 EVALUATION ----
-eval mean loss: 0.743977
-eval accuracy: 0.783255
-eval avg class acc: 0.397547
+eval mean loss: 0.741075
+eval accuracy: 0.752479
+eval avg class acc: 0.397391
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 001 ****
-2018-12-10 15:20:49.557756
-2018-12-10 15:21:26.350469
+2018-12-10 16:57:15.108962
+2018-12-10 16:57:51.849315
 ---- EPOCH 001 EVALUATION ----
-eval mean loss: 0.677315
-eval accuracy: 0.809021
-eval avg class acc: 0.445073
+eval mean loss: 0.610634
+eval accuracy: 0.793912
+eval avg class acc: 0.459322
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 002 ****
-2018-12-10 15:21:35.020440
-2018-12-10 15:22:11.820203
+2018-12-10 16:58:00.227274
+2018-12-10 16:58:36.969314
 ---- EPOCH 002 EVALUATION ----
-eval mean loss: 0.767235
-eval accuracy: 0.809754
-eval avg class acc: 0.470437
+eval mean loss: 0.631752
+eval accuracy: 0.813091
+eval avg class acc: 0.419600
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 003 ****
-2018-12-10 15:22:20.562427
-2018-12-10 15:22:57.169897
+2018-12-10 16:58:45.420402
+2018-12-10 16:59:22.130320
 ---- EPOCH 003 EVALUATION ----
-eval mean loss: 0.610825
-eval accuracy: 0.806484
-eval avg class acc: 0.414661
+eval mean loss: 0.635925
+eval accuracy: 0.810335
+eval avg class acc: 0.465134
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 004 ****
-2018-12-10 15:23:05.814963
-2018-12-10 15:23:42.598793
+2018-12-10 16:59:30.556993
+2018-12-10 17:00:07.250150
 ---- EPOCH 004 EVALUATION ----
-eval mean loss: 0.645564
-eval accuracy: 0.820725
-eval avg class acc: 0.467982
+eval mean loss: 0.555500
+eval accuracy: 0.818771
+eval avg class acc: 0.480093
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 005 ****
-2018-12-10 15:23:51.352708
-2018-12-10 15:24:28.038888
+2018-12-10 17:00:15.722144
+2018-12-10 17:00:52.467352
 ---- EPOCH 005 EVALUATION ----
-eval mean loss: 0.612119
-eval accuracy: 0.815247
-eval avg class acc: 0.470492
+eval mean loss: 0.569596
+eval accuracy: 0.815106
+eval avg class acc: 0.447282
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 006 ****
-2018-12-10 15:24:36.703690
-2018-12-10 15:25:13.432872
+2018-12-10 17:01:00.851760
+2018-12-10 17:01:37.565945
 ---- EPOCH 006 EVALUATION ----
-eval mean loss: 0.584485
-eval accuracy: 0.826044
-eval avg class acc: 0.500056
+eval mean loss: 0.654363
+eval accuracy: 0.814583
+eval avg class acc: 0.505761
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 007 ****
-2018-12-10 15:25:22.116638
-2018-12-10 15:25:58.749352
+2018-12-10 17:01:45.952040
+2018-12-10 17:02:22.732535
 ---- EPOCH 007 EVALUATION ----
-eval mean loss: 0.667955
-eval accuracy: 0.813401
-eval avg class acc: 0.460713
+eval mean loss: 0.594649
+eval accuracy: 0.813029
+eval avg class acc: 0.464911
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 008 ****
-2018-12-10 15:26:07.523441
-2018-12-10 15:26:44.259961
+2018-12-10 17:02:31.195058
+2018-12-10 17:03:07.862238
 ---- EPOCH 008 EVALUATION ----
-eval mean loss: 0.619126
-eval accuracy: 0.829196
-eval avg class acc: 0.473826
+eval mean loss: 0.638523
+eval accuracy: 0.815417
+eval avg class acc: 0.523167
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 009 ****
-2018-12-10 15:26:52.924412
-2018-12-10 15:27:29.694521
+2018-12-10 17:03:16.244378
+2018-12-10 17:03:52.925940
 ---- EPOCH 009 EVALUATION ----
-eval mean loss: 0.674174
-eval accuracy: 0.830088
-eval avg class acc: 0.486281
+eval mean loss: 0.585571
+eval accuracy: 0.825822
+eval avg class acc: 0.506634
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 010 ****
-2018-12-10 15:27:38.408886
-2018-12-10 15:28:15.132419
+2018-12-10 17:04:01.302233
+2018-12-10 17:04:38.026640
 ---- EPOCH 010 EVALUATION ----
-eval mean loss: 0.571908
-eval accuracy: 0.824729
-eval avg class acc: 0.506631
+eval mean loss: 0.559390
+eval accuracy: 0.833031
+eval avg class acc: 0.519043
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 011 ****
-2018-12-10 15:28:23.899973
-2018-12-10 15:29:00.557515
+2018-12-10 17:04:46.506839
+2018-12-10 17:05:23.233031
 ---- EPOCH 011 EVALUATION ----
-eval mean loss: 0.516138
-eval accuracy: 0.842026
-eval avg class acc: 0.522497
+eval mean loss: 0.511336
+eval accuracy: 0.827972
+eval avg class acc: 0.539488
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 012 ****
-2018-12-10 15:29:09.228659
-2018-12-10 15:29:45.977163
+2018-12-10 17:05:31.594901
+2018-12-10 17:06:08.350392
 ---- EPOCH 012 EVALUATION ----
-eval mean loss: 0.579242
-eval accuracy: 0.836458
-eval avg class acc: 0.516936
+eval mean loss: 0.554496
+eval accuracy: 0.832436
+eval avg class acc: 0.522299
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 013 ****
-2018-12-10 15:29:54.692137
-2018-12-10 15:30:31.342315
+2018-12-10 17:06:16.743450
+2018-12-10 17:06:53.433850
 ---- EPOCH 013 EVALUATION ----
-eval mean loss: 0.528507
-eval accuracy: 0.838181
-eval avg class acc: 0.493527
+eval mean loss: 0.549912
+eval accuracy: 0.831398
+eval avg class acc: 0.526808
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 014 ****
-2018-12-10 15:30:40.100015
-2018-12-10 15:31:16.825406
+2018-12-10 17:07:01.894041
+2018-12-10 17:07:38.636859
 ---- EPOCH 014 EVALUATION ----
-eval mean loss: 0.614581
-eval accuracy: 0.836727
-eval avg class acc: 0.513632
+eval mean loss: 0.511448
+eval accuracy: 0.841992
+eval avg class acc: 0.553226
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 015 ****
-2018-12-10 15:31:25.486153
-2018-12-10 15:32:02.206711
+2018-12-10 17:07:47.011236
+2018-12-10 17:08:23.735750
 ---- EPOCH 015 EVALUATION ----
-eval mean loss: 0.556793
-eval accuracy: 0.846496
-eval avg class acc: 0.513041
+eval mean loss: 0.500160
+eval accuracy: 0.844276
+eval avg class acc: 0.516600
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 016 ****
-2018-12-10 15:32:10.900211
-2018-12-10 15:32:47.602100
+2018-12-10 17:08:32.122235
+2018-12-10 17:09:08.817579
 ---- EPOCH 016 EVALUATION ----
-eval mean loss: 0.653409
-eval accuracy: 0.829849
-eval avg class acc: 0.525699
+eval mean loss: 0.492630
+eval accuracy: 0.854942
+eval avg class acc: 0.570010
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 017 ****
-2018-12-10 15:32:56.368237
-2018-12-10 15:33:33.101194
+2018-12-10 17:09:17.294361
+2018-12-10 17:09:53.854504
 ---- EPOCH 017 EVALUATION ----
-eval mean loss: 0.558743
-eval accuracy: 0.841926
-eval avg class acc: 0.534070
+eval mean loss: 0.450288
+eval accuracy: 0.856992
+eval avg class acc: 0.585745
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 018 ****
-2018-12-10 15:33:41.775250
-2018-12-10 15:34:18.402789
+2018-12-10 17:10:02.214957
+2018-12-10 17:10:38.902810
 ---- EPOCH 018 EVALUATION ----
-eval mean loss: 0.531994
-eval accuracy: 0.844704
-eval avg class acc: 0.531798
+eval mean loss: 0.575791
+eval accuracy: 0.840557
+eval avg class acc: 0.537324
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 019 ****
-2018-12-10 15:34:27.076618
-2018-12-10 15:35:03.760667
+2018-12-10 17:10:47.264165
+2018-12-10 17:11:24.000006
 ---- EPOCH 019 EVALUATION ----
-eval mean loss: 0.599081
-eval accuracy: 0.841751
-eval avg class acc: 0.512260
+eval mean loss: 0.485664
+eval accuracy: 0.860965
+eval avg class acc: 0.575710
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 020 ****
-2018-12-10 15:35:12.524794
-2018-12-10 15:35:49.237935
+2018-12-10 17:11:32.449176
+2018-12-10 17:12:09.218299
 ---- EPOCH 020 EVALUATION ----
-eval mean loss: 0.460304
-eval accuracy: 0.850503
-eval avg class acc: 0.556378
+eval mean loss: 0.461413
+eval accuracy: 0.857738
+eval avg class acc: 0.567638
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 021 ****
-2018-12-10 15:35:57.937274
-2018-12-10 15:36:34.717113
+2018-12-10 17:12:17.597665
+2018-12-10 17:12:54.330039
 ---- EPOCH 021 EVALUATION ----
-eval mean loss: 0.488247
-eval accuracy: 0.853388
-eval avg class acc: 0.542853
+eval mean loss: 0.476969
+eval accuracy: 0.859099
+eval avg class acc: 0.577374
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 022 ****
-2018-12-10 15:36:43.471094
-2018-12-10 15:37:20.185469
+2018-12-10 17:13:02.845757
+2018-12-10 17:13:39.493821
 ---- EPOCH 022 EVALUATION ----
-eval mean loss: 0.545302
-eval accuracy: 0.847953
-eval avg class acc: 0.526112
+eval mean loss: 0.468466
+eval accuracy: 0.857929
+eval avg class acc: 0.594658
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 023 ****
-2018-12-10 15:37:28.855396
-2018-12-10 15:38:05.554203
+2018-12-10 17:13:47.916076
+2018-12-10 17:14:24.631828
 ---- EPOCH 023 EVALUATION ----
-eval mean loss: 0.602875
-eval accuracy: 0.842479
-eval avg class acc: 0.536161
+eval mean loss: 0.499729
+eval accuracy: 0.856058
+eval avg class acc: 0.619749
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 024 ****
-2018-12-10 15:38:14.226739
-2018-12-10 15:38:50.853936
+2018-12-10 17:14:32.977946
+2018-12-10 17:15:09.732629
 ---- EPOCH 024 EVALUATION ----
-eval mean loss: 0.489716
-eval accuracy: 0.849290
-eval avg class acc: 0.549048
+eval mean loss: 0.444492
+eval accuracy: 0.864456
+eval avg class acc: 0.585332
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 025 ****
-2018-12-10 15:38:59.618777
-2018-12-10 15:39:36.274708
+2018-12-10 17:15:18.201461
+2018-12-10 17:15:54.918771
 ---- EPOCH 025 EVALUATION ----
-eval mean loss: 0.534297
-eval accuracy: 0.846550
-eval avg class acc: 0.541356
+eval mean loss: 0.454824
+eval accuracy: 0.865093
+eval avg class acc: 0.596789
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 026 ****
-2018-12-10 15:39:44.971467
-2018-12-10 15:40:21.744946
+2018-12-10 17:16:03.284741
+2018-12-10 17:16:40.063652
 ---- EPOCH 026 EVALUATION ----
-eval mean loss: 0.625364
-eval accuracy: 0.842580
-eval avg class acc: 0.519466
+eval mean loss: 0.445862
+eval accuracy: 0.875306
+eval avg class acc: 0.631771
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 027 ****
-2018-12-10 15:40:30.436564
-2018-12-10 15:41:07.166120
+2018-12-10 17:16:48.431304
+2018-12-10 17:17:25.138703
 ---- EPOCH 027 EVALUATION ----
-eval mean loss: 0.550116
-eval accuracy: 0.848195
-eval avg class acc: 0.552365
+eval mean loss: 0.463780
+eval accuracy: 0.863762
+eval avg class acc: 0.611500
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 028 ****
-2018-12-10 15:41:15.940085
-2018-12-10 15:41:52.574172
+2018-12-10 17:17:33.598541
+2018-12-10 17:18:10.286877
 ---- EPOCH 028 EVALUATION ----
-eval mean loss: 0.486208
-eval accuracy: 0.856282
-eval avg class acc: 0.558016
+eval mean loss: 0.494819
+eval accuracy: 0.861315
+eval avg class acc: 0.596021
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 029 ****
-2018-12-10 15:42:01.265082
-2018-12-10 15:42:38.016376
+2018-12-10 17:18:18.679923
+2018-12-10 17:18:55.406725
 ---- EPOCH 029 EVALUATION ----
-eval mean loss: 0.499602
-eval accuracy: 0.858174
-eval avg class acc: 0.562756
+eval mean loss: 0.461154
+eval accuracy: 0.864521
+eval avg class acc: 0.596015
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 030 ****
-2018-12-10 15:42:46.766168
-2018-12-10 15:43:23.501279
+2018-12-10 17:19:03.852996
+2018-12-10 17:19:40.462916
 ---- EPOCH 030 EVALUATION ----
-eval mean loss: 0.571659
-eval accuracy: 0.846782
-eval avg class acc: 0.551744
+eval mean loss: 0.477866
+eval accuracy: 0.866135
+eval avg class acc: 0.625863
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 031 ****
-2018-12-10 15:43:32.192160
-2018-12-10 15:44:08.893839
+2018-12-10 17:19:48.845274
+2018-12-10 17:20:25.490001
 ---- EPOCH 031 EVALUATION ----
-eval mean loss: 0.469834
-eval accuracy: 0.865769
-eval avg class acc: 0.597389
+eval mean loss: 0.454335
+eval accuracy: 0.872467
+eval avg class acc: 0.602169
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 032 ****
-2018-12-10 15:44:17.590367
-2018-12-10 15:44:54.370289
+2018-12-10 17:20:33.864671
+2018-12-10 17:21:10.561821
 ---- EPOCH 032 EVALUATION ----
-eval mean loss: 0.479461
-eval accuracy: 0.857183
-eval avg class acc: 0.553220
+eval mean loss: 0.454615
+eval accuracy: 0.867912
+eval avg class acc: 0.600843
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 033 ****
-2018-12-10 15:45:03.106414
-2018-12-10 15:45:39.799056
+2018-12-10 17:21:18.995873
+2018-12-10 17:21:55.718237
 ---- EPOCH 033 EVALUATION ----
-eval mean loss: 0.523219
-eval accuracy: 0.859642
-eval avg class acc: 0.568084
+eval mean loss: 0.429279
+eval accuracy: 0.866720
+eval avg class acc: 0.600522
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 034 ****
-2018-12-10 15:45:48.471295
-2018-12-10 15:46:25.192410
+2018-12-10 17:22:04.089134
+2018-12-10 17:22:40.913003
 ---- EPOCH 034 EVALUATION ----
-eval mean loss: 0.531978
-eval accuracy: 0.857874
-eval avg class acc: 0.551898
+eval mean loss: 0.536182
+eval accuracy: 0.864236
+eval avg class acc: 0.594477
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 035 ****
-2018-12-10 15:46:33.884935
-2018-12-10 15:47:10.628476
+2018-12-10 17:22:49.322841
+2018-12-10 17:23:26.019451
 ---- EPOCH 035 EVALUATION ----
-eval mean loss: 0.548758
-eval accuracy: 0.857538
-eval avg class acc: 0.573493
+eval mean loss: 0.435303
+eval accuracy: 0.874621
+eval avg class acc: 0.635300
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 036 ****
-2018-12-10 15:47:19.374437
-2018-12-10 15:47:56.037024
+2018-12-10 17:23:34.471698
+2018-12-10 17:24:11.211931
 ---- EPOCH 036 EVALUATION ----
-eval mean loss: 0.480124
-eval accuracy: 0.864117
-eval avg class acc: 0.598313
+eval mean loss: 0.492768
+eval accuracy: 0.864317
+eval avg class acc: 0.620781
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 037 ****
-2018-12-10 15:48:04.728442
-2018-12-10 15:48:41.506108
+2018-12-10 17:24:19.601786
+2018-12-10 17:24:56.205770
 ---- EPOCH 037 EVALUATION ----
-eval mean loss: 0.518094
-eval accuracy: 0.855030
-eval avg class acc: 0.563094
+eval mean loss: 0.503325
+eval accuracy: 0.868647
+eval avg class acc: 0.615879
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 038 ****
-2018-12-10 15:48:50.219795
-2018-12-10 15:49:26.987682
+2018-12-10 17:25:04.672394
+2018-12-10 17:25:41.424129
 ---- EPOCH 038 EVALUATION ----
-eval mean loss: 0.508655
-eval accuracy: 0.854813
-eval avg class acc: 0.567690
+eval mean loss: 0.434726
+eval accuracy: 0.860877
+eval avg class acc: 0.570779
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 039 ****
-2018-12-10 15:49:35.761265
-2018-12-10 15:50:12.376313
+2018-12-10 17:25:49.795484
+2018-12-10 17:26:26.560178
 ---- EPOCH 039 EVALUATION ----
-eval mean loss: 0.456221
-eval accuracy: 0.866930
-eval avg class acc: 0.636218
+eval mean loss: 0.512653
+eval accuracy: 0.867609
+eval avg class acc: 0.621039
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 040 ****
-2018-12-10 15:50:21.057283
-2018-12-10 15:50:57.696160
+2018-12-10 17:26:34.939075
+2018-12-10 17:27:11.663996
 ---- EPOCH 040 EVALUATION ----
-eval mean loss: 0.500104
-eval accuracy: 0.864522
-eval avg class acc: 0.594977
+eval mean loss: 0.517575
+eval accuracy: 0.862247
+eval avg class acc: 0.590697
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 041 ****
-2018-12-10 15:51:06.478118
-2018-12-10 15:51:43.191726
+2018-12-10 17:27:20.185368
+2018-12-10 17:27:57.001541
 ---- EPOCH 041 EVALUATION ----
-eval mean loss: 0.497173
-eval accuracy: 0.857582
-eval avg class acc: 0.550555
+eval mean loss: 0.475136
+eval accuracy: 0.868485
+eval avg class acc: 0.625285
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 042 ****
-2018-12-10 15:51:51.862383
-2018-12-10 15:52:28.487353
+2018-12-10 17:28:05.344675
+2018-12-10 17:28:42.034693
 ---- EPOCH 042 EVALUATION ----
-eval mean loss: 0.514665
-eval accuracy: 0.859490
-eval avg class acc: 0.588073
+eval mean loss: 0.497585
+eval accuracy: 0.861603
+eval avg class acc: 0.591575
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 043 ****
-2018-12-10 15:52:37.159588
-2018-12-10 15:53:13.973260
+2018-12-10 17:28:50.421735
+2018-12-10 17:29:27.187598
 ---- EPOCH 043 EVALUATION ----
-eval mean loss: 0.495392
-eval accuracy: 0.872068
-eval avg class acc: 0.612869
+eval mean loss: 0.451956
+eval accuracy: 0.874794
+eval avg class acc: 0.615963
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 044 ****
-2018-12-10 15:53:22.741963
-2018-12-10 15:53:59.533420
+2018-12-10 17:29:35.622714
+2018-12-10 17:30:12.247912
 ---- EPOCH 044 EVALUATION ----
-eval mean loss: 0.522587
-eval accuracy: 0.863132
-eval avg class acc: 0.583151
+eval mean loss: 0.482154
+eval accuracy: 0.866515
+eval avg class acc: 0.595355
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 045 ****
-2018-12-10 15:54:08.203945
-2018-12-10 15:54:44.952757
+2018-12-10 17:30:20.613635
+2018-12-10 17:30:57.291373
 ---- EPOCH 045 EVALUATION ----
-eval mean loss: 0.488676
-eval accuracy: 0.861554
-eval avg class acc: 0.574856
+eval mean loss: 0.507496
+eval accuracy: 0.866234
+eval avg class acc: 0.599619
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 046 ****
-2018-12-10 15:54:53.601628
-2018-12-10 15:55:30.227703
+2018-12-10 17:31:05.646277
+2018-12-10 17:31:42.416258
 ---- EPOCH 046 EVALUATION ----
-eval mean loss: 0.494348
-eval accuracy: 0.854558
-eval avg class acc: 0.582708
+eval mean loss: 0.567548
+eval accuracy: 0.854768
+eval avg class acc: 0.586730
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 047 ****
-2018-12-10 15:55:39.008350
-2018-12-10 15:56:15.708891
+2018-12-10 17:31:50.857324
+2018-12-10 17:32:27.472286
 ---- EPOCH 047 EVALUATION ----
-eval mean loss: 0.572092
-eval accuracy: 0.861899
-eval avg class acc: 0.567576
+eval mean loss: 0.440488
+eval accuracy: 0.867235
+eval avg class acc: 0.628998
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 048 ****
-2018-12-10 15:56:24.370125
-2018-12-10 15:57:01.208917
+2018-12-10 17:32:35.844204
+2018-12-10 17:33:12.449627
 ---- EPOCH 048 EVALUATION ----
-eval mean loss: 0.570333
-eval accuracy: 0.857806
-eval avg class acc: 0.573904
+eval mean loss: 0.510886
+eval accuracy: 0.866584
+eval avg class acc: 0.614952
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 049 ****
-2018-12-10 15:57:09.874005
-2018-12-10 15:57:46.558951
+2018-12-10 17:33:20.814723
+2018-12-10 17:33:57.545897
 ---- EPOCH 049 EVALUATION ----
-eval mean loss: 0.553794
-eval accuracy: 0.853413
-eval avg class acc: 0.567090
+eval mean loss: 0.451977
+eval accuracy: 0.881671
+eval avg class acc: 0.644576
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 050 ****
-2018-12-10 15:57:55.344585
-2018-12-10 15:58:32.057813
+2018-12-10 17:34:06.005850
+2018-12-10 17:34:42.657026
 ---- EPOCH 050 EVALUATION ----
-eval mean loss: 0.526912
-eval accuracy: 0.860399
-eval avg class acc: 0.565973
+eval mean loss: 0.461553
+eval accuracy: 0.871203
+eval avg class acc: 0.596083
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 051 ****
-2018-12-10 15:58:40.727914
-2018-12-10 15:59:17.451140
+2018-12-10 17:34:51.035817
+2018-12-10 17:35:27.782930
 ---- EPOCH 051 EVALUATION ----
-eval mean loss: 0.520670
-eval accuracy: 0.856851
-eval avg class acc: 0.579902
+eval mean loss: 0.506939
+eval accuracy: 0.864307
+eval avg class acc: 0.580241
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 052 ****
-2018-12-10 15:59:26.188277
-2018-12-10 16:00:02.846473
+2018-12-10 17:35:36.231276
+2018-12-10 17:36:12.864884
 ---- EPOCH 052 EVALUATION ----
-eval mean loss: 0.492004
-eval accuracy: 0.865606
-eval avg class acc: 0.609003
+eval mean loss: 0.490382
+eval accuracy: 0.871439
+eval avg class acc: 0.626487
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 053 ****
-2018-12-10 16:00:11.514340
-2018-12-10 16:00:48.218536
+2018-12-10 17:36:21.223890
+2018-12-10 17:36:57.862672
 ---- EPOCH 053 EVALUATION ----
-eval mean loss: 0.536030
-eval accuracy: 0.861147
-eval avg class acc: 0.560662
+eval mean loss: 0.467853
+eval accuracy: 0.868069
+eval avg class acc: 0.616699
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 054 ****
-2018-12-10 16:00:56.895734
-2018-12-10 16:01:33.734159
+2018-12-10 17:37:06.300281
+2018-12-10 17:37:42.968053
 ---- EPOCH 054 EVALUATION ----
-eval mean loss: 0.530708
-eval accuracy: 0.864819
-eval avg class acc: 0.606545
+eval mean loss: 0.460867
+eval accuracy: 0.871732
+eval avg class acc: 0.605724
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 055 ****
-2018-12-10 16:01:42.475521
-2018-12-10 16:02:19.190236
+2018-12-10 17:37:51.418504
+2018-12-10 17:38:28.107834
 ---- EPOCH 055 EVALUATION ----
-eval mean loss: 0.570179
-eval accuracy: 0.855859
-eval avg class acc: 0.547033
+eval mean loss: 0.527832
+eval accuracy: 0.869772
+eval avg class acc: 0.620581
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 056 ****
-2018-12-10 16:02:27.874339
-2018-12-10 16:03:04.672105
+2018-12-10 17:38:36.468617
+2018-12-10 17:39:13.153513
 ---- EPOCH 056 EVALUATION ----
-eval mean loss: 0.536280
-eval accuracy: 0.864919
-eval avg class acc: 0.588671
+eval mean loss: 0.470619
+eval accuracy: 0.867753
+eval avg class acc: 0.610487
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 057 ****
-2018-12-10 16:03:13.430598
-2018-12-10 16:03:50.151144
+2018-12-10 17:39:21.629956
+2018-12-10 17:39:58.343539
 ---- EPOCH 057 EVALUATION ----
-eval mean loss: 0.640250
-eval accuracy: 0.855566
-eval avg class acc: 0.549071
+eval mean loss: 0.454422
+eval accuracy: 0.871824
+eval avg class acc: 0.622645
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 058 ****
-2018-12-10 16:03:58.860705
-2018-12-10 16:04:35.673977
+2018-12-10 17:40:06.728501
+2018-12-10 17:40:43.366475
 ---- EPOCH 058 EVALUATION ----
-eval mean loss: 0.529645
-eval accuracy: 0.862426
-eval avg class acc: 0.587272
+eval mean loss: 0.490436
+eval accuracy: 0.873026
+eval avg class acc: 0.624712
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 059 ****
-2018-12-10 16:04:44.342332
-2018-12-10 16:05:21.089836
+2018-12-10 17:40:51.746105
+2018-12-10 17:41:28.461007
 ---- EPOCH 059 EVALUATION ----
-eval mean loss: 0.582551
-eval accuracy: 0.865674
-eval avg class acc: 0.581368
+eval mean loss: 0.477882
+eval accuracy: 0.873482
+eval avg class acc: 0.642118
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 060 ****
-2018-12-10 16:05:29.865548
-2018-12-10 16:06:06.518096
+2018-12-10 17:41:36.929040
+2018-12-10 17:42:13.616476
 ---- EPOCH 060 EVALUATION ----
-eval mean loss: 0.524538
-eval accuracy: 0.864012
-eval avg class acc: 0.584879
+eval mean loss: 0.473846
+eval accuracy: 0.871619
+eval avg class acc: 0.626209
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 061 ****
-2018-12-10 16:06:15.199180
-2018-12-10 16:06:51.968705
+2018-12-10 17:42:21.983631
+2018-12-10 17:42:58.756405
 ---- EPOCH 061 EVALUATION ----
-eval mean loss: 0.521549
-eval accuracy: 0.855906
-eval avg class acc: 0.562478
+eval mean loss: 0.477851
+eval accuracy: 0.868608
+eval avg class acc: 0.618788
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 062 ****
-2018-12-10 16:07:00.648218
-2018-12-10 16:07:36.963185
+2018-12-10 17:43:07.132906
+2018-12-10 17:43:43.837209
 ---- EPOCH 062 EVALUATION ----
-eval mean loss: 0.539474
-eval accuracy: 0.865003
-eval avg class acc: 0.558661
+eval mean loss: 0.517594
+eval accuracy: 0.866760
+eval avg class acc: 0.613292
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 063 ****
-2018-12-10 16:07:45.773031
-2018-12-10 16:08:39.356644
+2018-12-10 17:43:52.301283
+2018-12-10 17:44:29.009391
 ---- EPOCH 063 EVALUATION ----
-eval mean loss: 0.579235
-eval accuracy: 0.859097
-eval avg class acc: 0.595619
+eval mean loss: 0.465798
+eval accuracy: 0.867672
+eval avg class acc: 0.604071
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 064 ****
-2018-12-10 16:08:49.453397
-2018-12-10 16:09:42.962570
+2018-12-10 17:44:37.401078
+2018-12-10 17:45:14.058951
 ---- EPOCH 064 EVALUATION ----
-eval mean loss: 0.544442
-eval accuracy: 0.859401
-eval avg class acc: 0.582154
+eval mean loss: 0.464030
+eval accuracy: 0.874978
+eval avg class acc: 0.623897
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 065 ****
-2018-12-10 16:09:53.058294
-2018-12-10 16:10:46.544498
+2018-12-10 17:45:22.409597
+2018-12-10 17:45:59.147021
 ---- EPOCH 065 EVALUATION ----
-eval mean loss: 0.579075
-eval accuracy: 0.854913
-eval avg class acc: 0.571798
+eval mean loss: 0.551915
+eval accuracy: 0.871528
+eval avg class acc: 0.627274
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 066 ****
-2018-12-10 16:10:56.798608
-2018-12-10 16:11:50.347281
+2018-12-10 17:46:07.557588
+2018-12-10 17:46:44.259571
 ---- EPOCH 066 EVALUATION ----
-eval mean loss: 0.481803
-eval accuracy: 0.870274
-eval avg class acc: 0.600951
+eval mean loss: 0.492110
+eval accuracy: 0.866743
+eval avg class acc: 0.616947
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 067 ****
-2018-12-10 16:12:00.528657
-2018-12-10 16:12:54.153916
+2018-12-10 17:46:52.640607
+2018-12-10 17:47:29.302499
 ---- EPOCH 067 EVALUATION ----
-eval mean loss: 0.499362
-eval accuracy: 0.871324
-eval avg class acc: 0.630097
+eval mean loss: 0.476826
+eval accuracy: 0.874135
+eval avg class acc: 0.630515
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 068 ****
-2018-12-10 16:13:04.318757
-2018-12-10 16:13:57.956040
+2018-12-10 17:47:37.765477
+2018-12-10 17:48:14.356689
 ---- EPOCH 068 EVALUATION ----
-eval mean loss: 0.594582
-eval accuracy: 0.854240
-eval avg class acc: 0.572681
+eval mean loss: 0.558775
+eval accuracy: 0.868026
+eval avg class acc: 0.608653
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 069 ****
-2018-12-10 16:14:08.165648
-2018-12-10 16:15:01.761532
+2018-12-10 17:48:22.728202
+2018-12-10 17:48:59.452996
 ---- EPOCH 069 EVALUATION ----
-eval mean loss: 0.493356
-eval accuracy: 0.865490
-eval avg class acc: 0.585158
+eval mean loss: 0.538430
+eval accuracy: 0.876398
+eval avg class acc: 0.619250
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 070 ****
-2018-12-10 16:15:11.846968
-2018-12-10 16:16:05.365320
+2018-12-10 17:49:07.826654
+2018-12-10 17:49:44.415799
 ---- EPOCH 070 EVALUATION ----
-eval mean loss: 0.453340
-eval accuracy: 0.869496
-eval avg class acc: 0.599775
+eval mean loss: 0.487413
+eval accuracy: 0.872538
+eval avg class acc: 0.625256
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 071 ****
-2018-12-10 16:16:15.669413
-2018-12-10 16:16:53.781068
+2018-12-10 17:49:52.922517
+2018-12-10 17:50:29.618111
 ---- EPOCH 071 EVALUATION ----
-eval mean loss: 0.505404
-eval accuracy: 0.866069
-eval avg class acc: 0.592971
+eval mean loss: 0.499828
+eval accuracy: 0.866987
+eval avg class acc: 0.629856
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 072 ****
-2018-12-10 16:17:02.462332
-2018-12-10 16:17:39.266736
+2018-12-10 17:50:37.981155
+2018-12-10 17:51:14.618943
 ---- EPOCH 072 EVALUATION ----
-eval mean loss: 0.564993
-eval accuracy: 0.865834
-eval avg class acc: 0.591206
+eval mean loss: 0.492666
+eval accuracy: 0.867863
+eval avg class acc: 0.619078
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 073 ****
-2018-12-10 16:17:47.958418
-2018-12-10 16:18:24.705484
+2018-12-10 17:51:22.995861
+2018-12-10 17:51:59.756935
 ---- EPOCH 073 EVALUATION ----
-eval mean loss: 0.521213
-eval accuracy: 0.863683
-eval avg class acc: 0.562511
+eval mean loss: 0.520400
+eval accuracy: 0.874287
+eval avg class acc: 0.624013
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 074 ****
-2018-12-10 16:18:33.491793
-2018-12-10 16:19:10.182144
+2018-12-10 17:52:08.192922
+2018-12-10 17:52:44.820335
 ---- EPOCH 074 EVALUATION ----
-eval mean loss: 0.560148
-eval accuracy: 0.864598
-eval avg class acc: 0.589626
+eval mean loss: 0.613094
+eval accuracy: 0.866244
+eval avg class acc: 0.625740
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 075 ****
-2018-12-10 16:19:18.877056
-2018-12-10 16:19:55.701884
+2018-12-10 17:52:53.193626
+2018-12-10 17:53:29.896950
 ---- EPOCH 075 EVALUATION ----
-eval mean loss: 0.557364
-eval accuracy: 0.864558
-eval avg class acc: 0.584824
+eval mean loss: 0.543694
+eval accuracy: 0.870625
+eval avg class acc: 0.600095
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 076 ****
-2018-12-10 16:20:04.459627
-2018-12-10 16:20:41.229750
+2018-12-10 17:53:38.414172
+2018-12-10 17:54:15.079774
 ---- EPOCH 076 EVALUATION ----
-eval mean loss: 0.550901
-eval accuracy: 0.860417
-eval avg class acc: 0.562480
+eval mean loss: 0.512994
+eval accuracy: 0.876790
+eval avg class acc: 0.624862
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 077 ****
-2018-12-10 16:20:49.922486
-2018-12-10 16:21:26.619679
+2018-12-10 17:54:23.462413
+2018-12-10 17:55:00.251437
 ---- EPOCH 077 EVALUATION ----
-eval mean loss: 0.501329
-eval accuracy: 0.861509
-eval avg class acc: 0.603465
+eval mean loss: 0.496258
+eval accuracy: 0.873388
+eval avg class acc: 0.626132
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 078 ****
-2018-12-10 16:21:35.274808
-2018-12-10 16:22:12.048019
+2018-12-10 17:55:08.642845
+2018-12-10 17:55:45.347059
 ---- EPOCH 078 EVALUATION ----
-eval mean loss: 0.551713
-eval accuracy: 0.859088
-eval avg class acc: 0.558803
+eval mean loss: 0.493090
+eval accuracy: 0.876989
+eval avg class acc: 0.627117
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 079 ****
-2018-12-10 16:22:20.813613
-2018-12-10 16:22:57.648355
+2018-12-10 17:55:53.781574
+2018-12-10 17:56:30.492984
 ---- EPOCH 079 EVALUATION ----
-eval mean loss: 0.584515
-eval accuracy: 0.860640
-eval avg class acc: 0.574700
+eval mean loss: 0.509421
+eval accuracy: 0.871453
+eval avg class acc: 0.611990
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 080 ****
-2018-12-10 16:23:06.328286
-2018-12-10 16:23:43.127755
+2018-12-10 17:56:38.864501
+2018-12-10 17:57:15.628957
 ---- EPOCH 080 EVALUATION ----
-eval mean loss: 0.586849
-eval accuracy: 0.862633
-eval avg class acc: 0.579712
+eval mean loss: 0.520811
+eval accuracy: 0.873605
+eval avg class acc: 0.604014
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 081 ****
-2018-12-10 16:23:51.819012
-2018-12-10 16:24:28.539738
+2018-12-10 17:57:24.004463
+2018-12-10 17:58:00.667702
 ---- EPOCH 081 EVALUATION ----
-eval mean loss: 0.541725
-eval accuracy: 0.850991
-eval avg class acc: 0.567691
+eval mean loss: 0.513321
+eval accuracy: 0.874196
+eval avg class acc: 0.617684
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 082 ****
-2018-12-10 16:24:37.293290
-2018-12-10 16:25:13.956993
+2018-12-10 17:58:09.145550
+2018-12-10 17:58:45.866067
 ---- EPOCH 082 EVALUATION ----
-eval mean loss: 0.542275
-eval accuracy: 0.858353
-eval avg class acc: 0.571272
+eval mean loss: 0.487239
+eval accuracy: 0.869488
+eval avg class acc: 0.620432
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 083 ****
-2018-12-10 16:25:22.625374
-2018-12-10 16:25:59.293469
+2018-12-10 17:58:54.236822
+2018-12-10 17:59:30.868428
 ---- EPOCH 083 EVALUATION ----
-eval mean loss: 0.578758
-eval accuracy: 0.860245
-eval avg class acc: 0.580195
+eval mean loss: 0.512018
+eval accuracy: 0.873467
+eval avg class acc: 0.634691
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 084 ****
-2018-12-10 16:26:07.978970
-2018-12-10 16:26:44.627677
+2018-12-10 17:59:39.242739
+2018-12-10 18:00:15.946713
 ---- EPOCH 084 EVALUATION ----
-eval mean loss: 0.554351
-eval accuracy: 0.861946
-eval avg class acc: 0.587998
+eval mean loss: 0.542685
+eval accuracy: 0.864528
+eval avg class acc: 0.616288
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 085 ****
-2018-12-10 16:26:53.417724
-2018-12-10 16:27:30.129758
+2018-12-10 18:00:24.383499
+2018-12-10 18:01:01.129783
 ---- EPOCH 085 EVALUATION ----
-eval mean loss: 0.513916
-eval accuracy: 0.865237
-eval avg class acc: 0.605370
+eval mean loss: 0.534824
+eval accuracy: 0.872420
+eval avg class acc: 0.619333
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 086 ****
-2018-12-10 16:27:38.789096
-2018-12-10 16:28:15.555586
+2018-12-10 18:01:09.572321
+2018-12-10 18:01:46.281248
 ---- EPOCH 086 EVALUATION ----
-eval mean loss: 0.565193
-eval accuracy: 0.862831
-eval avg class acc: 0.589778
+eval mean loss: 0.482853
+eval accuracy: 0.872223
+eval avg class acc: 0.608897
 Model saved in file: log_se_ndt_segm/model.ckpt
 **** EPOCH 087 ****
-2018-12-10 16:28:24.216251
-2018-12-10 16:29:00.889210
+2018-12-10 18:01:54.719072
+2018-12-10 18:02:31.337363
 ---- EPOCH 087 EVALUATION ----
+eval mean loss: 0.519618
+eval accuracy: 0.871649
+eval avg class acc: 0.614987
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 088 ****
+2018-12-10 18:02:39.720322
+2018-12-10 18:03:16.400343
+---- EPOCH 088 EVALUATION ----
+eval mean loss: 0.552481
+eval accuracy: 0.871127
+eval avg class acc: 0.628255
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 089 ****
+2018-12-10 18:03:24.788283
+2018-12-10 18:04:01.498443
+---- EPOCH 089 EVALUATION ----
+eval mean loss: 0.536968
+eval accuracy: 0.866249
+eval avg class acc: 0.610179
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 090 ****
+2018-12-10 18:04:09.961533
+2018-12-10 18:04:46.527781
+---- EPOCH 090 EVALUATION ----
+eval mean loss: 0.517193
+eval accuracy: 0.871572
+eval avg class acc: 0.614342
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 091 ****
+2018-12-10 18:04:54.896303
+2018-12-10 18:05:31.629717
+---- EPOCH 091 EVALUATION ----
+eval mean loss: 0.480634
+eval accuracy: 0.874526
+eval avg class acc: 0.618616
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 092 ****
+2018-12-10 18:05:39.987715
+2018-12-10 18:06:16.702306
+---- EPOCH 092 EVALUATION ----
+eval mean loss: 0.520300
+eval accuracy: 0.872483
+eval avg class acc: 0.621227
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 093 ****
+2018-12-10 18:06:25.184385
+2018-12-10 18:07:01.971909
+---- EPOCH 093 EVALUATION ----
+eval mean loss: 0.459457
+eval accuracy: 0.872031
+eval avg class acc: 0.615493
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 094 ****
+2018-12-10 18:07:10.334113
+2018-12-10 18:07:47.063779
+---- EPOCH 094 EVALUATION ----
+eval mean loss: 0.542736
+eval accuracy: 0.869640
+eval avg class acc: 0.619323
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 095 ****
+2018-12-10 18:07:55.455377
+2018-12-10 18:08:32.163179
+---- EPOCH 095 EVALUATION ----
+eval mean loss: 0.575353
+eval accuracy: 0.868544
+eval avg class acc: 0.603907
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 096 ****
+2018-12-10 18:08:40.604065
+2018-12-10 18:09:17.204644
+---- EPOCH 096 EVALUATION ----
+eval mean loss: 0.572305
+eval accuracy: 0.861310
+eval avg class acc: 0.587791
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 097 ****
+2018-12-10 18:09:25.559847
+2018-12-10 18:10:02.278085
+---- EPOCH 097 EVALUATION ----
+eval mean loss: 0.552317
+eval accuracy: 0.864220
+eval avg class acc: 0.585971
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 098 ****
+2018-12-10 18:10:10.641623
+2018-12-10 18:10:47.352669
+---- EPOCH 098 EVALUATION ----
+eval mean loss: 0.550110
+eval accuracy: 0.865498
+eval avg class acc: 0.587105
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 099 ****
+2018-12-10 18:10:55.832924
+2018-12-10 18:11:32.553622
+---- EPOCH 099 EVALUATION ----
+eval mean loss: 0.482795
+eval accuracy: 0.871674
+eval avg class acc: 0.610166
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 100 ****
+2018-12-10 18:11:40.907408
+2018-12-10 18:12:17.523960
+---- EPOCH 100 EVALUATION ----
+eval mean loss: 0.531504
+eval accuracy: 0.871106
+eval avg class acc: 0.617040
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 101 ****
+2018-12-10 18:12:25.959359
+2018-12-10 18:13:02.728496
+---- EPOCH 101 EVALUATION ----
+eval mean loss: 0.558071
+eval accuracy: 0.861071
+eval avg class acc: 0.576298
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 102 ****
+2018-12-10 18:13:11.093602
+2018-12-10 18:13:47.833546
+---- EPOCH 102 EVALUATION ----
+eval mean loss: 0.511964
+eval accuracy: 0.878717
+eval avg class acc: 0.637625
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 103 ****
+2018-12-10 18:13:56.231994
+2018-12-10 18:14:32.934793
+---- EPOCH 103 EVALUATION ----
+eval mean loss: 0.558898
+eval accuracy: 0.870665
+eval avg class acc: 0.611034
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 104 ****
+2018-12-10 18:14:41.409991
+2018-12-10 18:15:18.113613
+---- EPOCH 104 EVALUATION ----
+eval mean loss: 0.540849
+eval accuracy: 0.867588
+eval avg class acc: 0.598824
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 105 ****
+2018-12-10 18:15:26.496115
+2018-12-10 18:16:03.225270
+---- EPOCH 105 EVALUATION ----
+eval mean loss: 0.487895
+eval accuracy: 0.875579
+eval avg class acc: 0.620888
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 106 ****
+2018-12-10 18:16:11.733243
+2018-12-10 18:16:48.446891
+---- EPOCH 106 EVALUATION ----
+eval mean loss: 0.520783
+eval accuracy: 0.869531
+eval avg class acc: 0.615763
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 107 ****
+2018-12-10 18:16:56.804685
+2018-12-10 18:17:33.538596
+---- EPOCH 107 EVALUATION ----
+eval mean loss: 0.601867
+eval accuracy: 0.862865
+eval avg class acc: 0.588006
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 108 ****
+2018-12-10 18:17:41.922680
+2018-12-10 18:18:18.661334
+---- EPOCH 108 EVALUATION ----
+eval mean loss: 0.514090
+eval accuracy: 0.868210
+eval avg class acc: 0.601143
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 109 ****
+2018-12-10 18:18:27.118348
+2018-12-10 18:19:03.764896
+---- EPOCH 109 EVALUATION ----
+eval mean loss: 0.507094
+eval accuracy: 0.875213
+eval avg class acc: 0.620244
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 110 ****
+2018-12-10 18:19:12.137934
+2018-12-10 18:19:48.891042
+---- EPOCH 110 EVALUATION ----
+eval mean loss: 0.518899
+eval accuracy: 0.877360
+eval avg class acc: 0.615207
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 111 ****
+2018-12-10 18:19:57.263872
+2018-12-10 18:20:34.064728
+---- EPOCH 111 EVALUATION ----
+eval mean loss: 0.547741
+eval accuracy: 0.871081
+eval avg class acc: 0.608697
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 112 ****
+2018-12-10 18:20:42.497930
+2018-12-10 18:21:19.114514
+---- EPOCH 112 EVALUATION ----
+eval mean loss: 0.518726
+eval accuracy: 0.876171
+eval avg class acc: 0.630502
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 113 ****
+2018-12-10 18:21:27.483241
+2018-12-10 18:22:04.215587
+---- EPOCH 113 EVALUATION ----
+eval mean loss: 0.534223
+eval accuracy: 0.868114
+eval avg class acc: 0.603188
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 114 ****
+2018-12-10 18:22:12.610463
+2018-12-10 18:22:49.339441
+---- EPOCH 114 EVALUATION ----
+eval mean loss: 0.511268
+eval accuracy: 0.870380
+eval avg class acc: 0.600463
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 115 ****
+2018-12-10 18:22:57.794959
+2018-12-10 18:23:34.570000
+---- EPOCH 115 EVALUATION ----
+eval mean loss: 0.524964
+eval accuracy: 0.870872
+eval avg class acc: 0.616386
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 116 ****
+2018-12-10 18:23:42.970300
+2018-12-10 18:24:19.595154
+---- EPOCH 116 EVALUATION ----
+eval mean loss: 0.498766
+eval accuracy: 0.871681
+eval avg class acc: 0.621551
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 117 ****
+2018-12-10 18:24:28.057898
+2018-12-10 18:25:04.805500
+---- EPOCH 117 EVALUATION ----
+eval mean loss: 0.480481
+eval accuracy: 0.872481
+eval avg class acc: 0.622230
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 118 ****
+2018-12-10 18:25:13.194899
+2018-12-10 18:25:49.908534
+---- EPOCH 118 EVALUATION ----
+eval mean loss: 0.563845
+eval accuracy: 0.868474
+eval avg class acc: 0.605264
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 119 ****
+2018-12-10 18:25:58.341917
+2018-12-10 18:26:35.074767
+---- EPOCH 119 EVALUATION ----
+eval mean loss: 0.535287
+eval accuracy: 0.870422
+eval avg class acc: 0.624747
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 120 ****
+2018-12-10 18:26:43.538432
+2018-12-10 18:27:20.203977
+---- EPOCH 120 EVALUATION ----
+eval mean loss: 0.554250
+eval accuracy: 0.871176
+eval avg class acc: 0.623048
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 121 ****
+2018-12-10 18:27:28.559036
+2018-12-10 18:28:05.168286
+---- EPOCH 121 EVALUATION ----
+eval mean loss: 0.554504
+eval accuracy: 0.871040
+eval avg class acc: 0.613858
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 122 ****
+2018-12-10 18:28:13.546909
+2018-12-10 18:28:50.160183
+---- EPOCH 122 EVALUATION ----
+eval mean loss: 0.541666
+eval accuracy: 0.869251
+eval avg class acc: 0.618679
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 123 ****
+2018-12-10 18:28:58.610842
+2018-12-10 18:29:35.293716
+---- EPOCH 123 EVALUATION ----
+eval mean loss: 0.532723
+eval accuracy: 0.869471
+eval avg class acc: 0.601383
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 124 ****
+2018-12-10 18:29:43.655729
+2018-12-10 18:30:20.387655
+---- EPOCH 124 EVALUATION ----
+eval mean loss: 0.541136
+eval accuracy: 0.867956
+eval avg class acc: 0.598166
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 125 ****
+2018-12-10 18:30:28.816227
+2018-12-10 18:31:05.489935
+---- EPOCH 125 EVALUATION ----
+eval mean loss: 0.587474
+eval accuracy: 0.867887
+eval avg class acc: 0.606656
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 126 ****
+2018-12-10 18:31:13.879340
+2018-12-10 18:31:50.586982
+---- EPOCH 126 EVALUATION ----
+eval mean loss: 0.602026
+eval accuracy: 0.866946
+eval avg class acc: 0.588029
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 127 ****
+2018-12-10 18:31:58.964890
+2018-12-10 18:32:35.663165
+---- EPOCH 127 EVALUATION ----
+eval mean loss: 0.548653
+eval accuracy: 0.870094
+eval avg class acc: 0.619382
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 128 ****
+2018-12-10 18:32:44.091536
+2018-12-10 18:33:20.697365
+---- EPOCH 128 EVALUATION ----
+eval mean loss: 0.535857
+eval accuracy: 0.871301
+eval avg class acc: 0.608287
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 129 ****
+2018-12-10 18:33:29.078237
+2018-12-10 18:34:05.774575
+---- EPOCH 129 EVALUATION ----
+eval mean loss: 0.492630
+eval accuracy: 0.876714
+eval avg class acc: 0.629614
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 130 ****
+2018-12-10 18:34:14.148558
+2018-12-10 18:34:50.856772
+---- EPOCH 130 EVALUATION ----
+eval mean loss: 0.535912
+eval accuracy: 0.873739
+eval avg class acc: 0.613468
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 131 ****
+2018-12-10 18:34:59.307654
+2018-12-10 18:35:36.019462
+---- EPOCH 131 EVALUATION ----
+eval mean loss: 0.510485
+eval accuracy: 0.871087
+eval avg class acc: 0.595711
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 132 ****
+2018-12-10 18:35:44.397659
+2018-12-10 18:36:21.133622
+---- EPOCH 132 EVALUATION ----
+eval mean loss: 0.537113
+eval accuracy: 0.872576
+eval avg class acc: 0.616212
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 133 ****
+2018-12-10 18:36:29.528941
+2018-12-10 18:37:06.155221
+---- EPOCH 133 EVALUATION ----
+eval mean loss: 0.580443
+eval accuracy: 0.870183
+eval avg class acc: 0.606069
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 134 ****
+2018-12-10 18:37:14.646837
+2018-12-10 18:37:51.328799
+---- EPOCH 134 EVALUATION ----
+eval mean loss: 0.513286
+eval accuracy: 0.872841
+eval avg class acc: 0.628354
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 135 ****
+2018-12-10 18:37:59.667521
+2018-12-10 18:38:36.398180
+---- EPOCH 135 EVALUATION ----
+eval mean loss: 0.570391
+eval accuracy: 0.870874
+eval avg class acc: 0.610173
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 136 ****
+2018-12-10 18:38:44.873800
+2018-12-10 18:39:21.553161
+---- EPOCH 136 EVALUATION ----
+eval mean loss: 0.601462
+eval accuracy: 0.867392
+eval avg class acc: 0.593737
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 137 ****
+2018-12-10 18:39:29.943401
+2018-12-10 18:40:06.691806
+---- EPOCH 137 EVALUATION ----
+eval mean loss: 0.556142
+eval accuracy: 0.864800
+eval avg class acc: 0.610024
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 138 ****
+2018-12-10 18:40:15.060977
+2018-12-10 18:40:51.680413
+---- EPOCH 138 EVALUATION ----
+eval mean loss: 0.494227
+eval accuracy: 0.875206
+eval avg class acc: 0.647649
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 139 ****
+2018-12-10 18:41:00.172283
+2018-12-10 18:41:36.874588
+---- EPOCH 139 EVALUATION ----
+eval mean loss: 0.595917
+eval accuracy: 0.864629
+eval avg class acc: 0.597258
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 140 ****
+2018-12-10 18:41:45.259087
+2018-12-10 18:42:22.003248
+---- EPOCH 140 EVALUATION ----
+eval mean loss: 0.574180
+eval accuracy: 0.864974
+eval avg class acc: 0.588914
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 141 ****
+2018-12-10 18:42:30.456826
+2018-12-10 18:43:07.238432
+---- EPOCH 141 EVALUATION ----
+eval mean loss: 0.606929
+eval accuracy: 0.862073
+eval avg class acc: 0.577740
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 142 ****
+2018-12-10 18:43:15.718750
+2018-12-10 18:43:52.434303
+---- EPOCH 142 EVALUATION ----
+eval mean loss: 0.585812
+eval accuracy: 0.863706
+eval avg class acc: 0.594543
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 143 ****
+2018-12-10 18:44:00.784994
+2018-12-10 18:44:37.524608
+---- EPOCH 143 EVALUATION ----
+eval mean loss: 0.549285
+eval accuracy: 0.873200
+eval avg class acc: 0.624941
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 144 ****
+2018-12-10 18:44:45.904642
+2018-12-10 18:45:22.515783
+---- EPOCH 144 EVALUATION ----
+eval mean loss: 0.589113
+eval accuracy: 0.867538
+eval avg class acc: 0.603980
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 145 ****
+2018-12-10 18:45:30.967038
+2018-12-10 18:46:07.699873
+---- EPOCH 145 EVALUATION ----
+eval mean loss: 0.558295
+eval accuracy: 0.869994
+eval avg class acc: 0.604811
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 146 ****
+2018-12-10 18:46:16.068779
+2018-12-10 18:46:52.793627
+---- EPOCH 146 EVALUATION ----
+eval mean loss: 0.529975
+eval accuracy: 0.870344
+eval avg class acc: 0.608614
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 147 ****
+2018-12-10 18:47:01.142835
+2018-12-10 18:47:37.854442
+---- EPOCH 147 EVALUATION ----
+eval mean loss: 0.575626
+eval accuracy: 0.873313
+eval avg class acc: 0.613558
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 148 ****
+2018-12-10 18:47:46.295753
+2018-12-10 18:48:23.000095
+---- EPOCH 148 EVALUATION ----
+eval mean loss: 0.505181
+eval accuracy: 0.873879
+eval avg class acc: 0.621488
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 149 ****
+2018-12-10 18:48:31.386918
+2018-12-10 18:49:08.101474
+---- EPOCH 149 EVALUATION ----
+eval mean loss: 0.573685
+eval accuracy: 0.869613
+eval avg class acc: 0.619943
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 150 ****
+2018-12-10 18:49:16.584521
+2018-12-10 18:49:53.242146
+---- EPOCH 150 EVALUATION ----
+eval mean loss: 0.537333
+eval accuracy: 0.869454
+eval avg class acc: 0.612869
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 151 ****
+2018-12-10 18:50:01.626381
+2018-12-10 18:50:38.285183
+---- EPOCH 151 EVALUATION ----
+eval mean loss: 0.553162
+eval accuracy: 0.867953
+eval avg class acc: 0.602198
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 152 ****
+2018-12-10 18:50:46.662628
+2018-12-10 18:51:23.339068
+---- EPOCH 152 EVALUATION ----
+eval mean loss: 0.564181
+eval accuracy: 0.870274
+eval avg class acc: 0.605264
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 153 ****
+2018-12-10 18:51:31.785969
+2018-12-10 18:52:08.492116
+---- EPOCH 153 EVALUATION ----
+eval mean loss: 0.576663
+eval accuracy: 0.869474
+eval avg class acc: 0.611979
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 154 ****
+2018-12-10 18:52:16.867855
+2018-12-10 18:52:53.599439
+---- EPOCH 154 EVALUATION ----
+eval mean loss: 0.530572
+eval accuracy: 0.873862
+eval avg class acc: 0.621326
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 155 ****
+2018-12-10 18:53:02.072513
+2018-12-10 18:53:38.761292
+---- EPOCH 155 EVALUATION ----
+eval mean loss: 0.599070
+eval accuracy: 0.869904
+eval avg class acc: 0.606326
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 156 ****
+2018-12-10 18:53:47.144469
+2018-12-10 18:54:23.818360
+---- EPOCH 156 EVALUATION ----
+eval mean loss: 0.609666
+eval accuracy: 0.864578
+eval avg class acc: 0.598416
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 157 ****
+2018-12-10 18:54:32.187546
+2018-12-10 18:55:08.817973
+---- EPOCH 157 EVALUATION ----
+eval mean loss: 0.552844
+eval accuracy: 0.870614
+eval avg class acc: 0.599567
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 158 ****
+2018-12-10 18:55:17.271935
+2018-12-10 18:55:53.860916
+---- EPOCH 158 EVALUATION ----
+eval mean loss: 0.582224
+eval accuracy: 0.866192
+eval avg class acc: 0.600531
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 159 ****
+2018-12-10 18:56:02.206443
+2018-12-10 18:56:38.927667
+---- EPOCH 159 EVALUATION ----
+eval mean loss: 0.594639
+eval accuracy: 0.863991
+eval avg class acc: 0.583235
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 160 ****
+2018-12-10 18:56:47.286492
+2018-12-10 18:57:24.028412
+---- EPOCH 160 EVALUATION ----
+eval mean loss: 0.547300
+eval accuracy: 0.877219
+eval avg class acc: 0.621156
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 161 ****
+2018-12-10 18:57:32.477004
+2018-12-10 18:58:09.146454
+---- EPOCH 161 EVALUATION ----
+eval mean loss: 0.539780
+eval accuracy: 0.874817
+eval avg class acc: 0.617343
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 162 ****
+2018-12-10 18:58:17.501226
+2018-12-10 18:58:54.289475
+---- EPOCH 162 EVALUATION ----
+eval mean loss: 0.597747
+eval accuracy: 0.870533
+eval avg class acc: 0.623533
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 163 ****
+2018-12-10 18:59:02.705270
+2018-12-10 18:59:39.484272
+---- EPOCH 163 EVALUATION ----
+eval mean loss: 0.566725
+eval accuracy: 0.872618
+eval avg class acc: 0.621982
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 164 ****
+2018-12-10 18:59:47.944484
+2018-12-10 19:00:24.642302
+---- EPOCH 164 EVALUATION ----
+eval mean loss: 0.581435
+eval accuracy: 0.873204
+eval avg class acc: 0.626887
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 165 ****
+2018-12-10 19:00:33.002726
+2018-12-10 19:01:09.672068
+---- EPOCH 165 EVALUATION ----
+eval mean loss: 0.638409
+eval accuracy: 0.870159
+eval avg class acc: 0.613470
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 166 ****
+2018-12-10 19:01:18.123415
+2018-12-10 19:01:54.871653
+---- EPOCH 166 EVALUATION ----
+eval mean loss: 0.567252
+eval accuracy: 0.866357
+eval avg class acc: 0.618424
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 167 ****
+2018-12-10 19:02:03.252267
+2018-12-10 19:02:40.003674
+---- EPOCH 167 EVALUATION ----
+eval mean loss: 0.525398
+eval accuracy: 0.873799
+eval avg class acc: 0.619442
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 168 ****
+2018-12-10 19:02:48.384371
+2018-12-10 19:03:25.167380
+---- EPOCH 168 EVALUATION ----
+eval mean loss: 0.568567
+eval accuracy: 0.869438
+eval avg class acc: 0.618856
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 169 ****
+2018-12-10 19:03:33.608832
+2018-12-10 19:04:10.226951
+---- EPOCH 169 EVALUATION ----
+eval mean loss: 0.506122
+eval accuracy: 0.877304
+eval avg class acc: 0.630934
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 170 ****
+2018-12-10 19:04:18.616551
+2018-12-10 19:04:55.378064
+---- EPOCH 170 EVALUATION ----
+eval mean loss: 0.538290
+eval accuracy: 0.872428
+eval avg class acc: 0.652704
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 171 ****
+2018-12-10 19:05:03.737625
+2018-12-10 19:05:40.285800
+---- EPOCH 171 EVALUATION ----
+eval mean loss: 0.512616
+eval accuracy: 0.870741
+eval avg class acc: 0.636572
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 172 ****
+2018-12-10 19:05:48.749266
+2018-12-10 19:06:25.465944
+---- EPOCH 172 EVALUATION ----
+eval mean loss: 0.516632
+eval accuracy: 0.870158
+eval avg class acc: 0.610201
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 173 ****
+2018-12-10 19:06:33.840425
+2018-12-10 19:07:10.582179
+---- EPOCH 173 EVALUATION ----
+eval mean loss: 0.526206
+eval accuracy: 0.876156
+eval avg class acc: 0.633569
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 174 ****
+2018-12-10 19:07:19.050481
+2018-12-10 19:07:55.780776
+---- EPOCH 174 EVALUATION ----
+eval mean loss: 0.524931
+eval accuracy: 0.876478
+eval avg class acc: 0.630977
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 175 ****
+2018-12-10 19:08:04.148259
+2018-12-10 19:08:40.901550
+---- EPOCH 175 EVALUATION ----
+eval mean loss: 0.577721
+eval accuracy: 0.865831
+eval avg class acc: 0.601927
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 176 ****
+2018-12-10 19:08:49.276971
+2018-12-10 19:09:25.928838
+---- EPOCH 176 EVALUATION ----
+eval mean loss: 0.595128
+eval accuracy: 0.868750
+eval avg class acc: 0.599662
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 177 ****
+2018-12-10 19:09:34.375022
+2018-12-10 19:10:11.136898
+---- EPOCH 177 EVALUATION ----
+eval mean loss: 0.572676
+eval accuracy: 0.870474
+eval avg class acc: 0.618466
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 178 ****
+2018-12-10 19:10:19.518625
+2018-12-10 19:10:56.277843
+---- EPOCH 178 EVALUATION ----
+eval mean loss: 0.576506
+eval accuracy: 0.868996
+eval avg class acc: 0.615583
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 179 ****
+2018-12-10 19:11:04.710343
+2018-12-10 19:11:41.472355
+---- EPOCH 179 EVALUATION ----
+eval mean loss: 0.626573
+eval accuracy: 0.868358
+eval avg class acc: 0.613151
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 180 ****
+2018-12-10 19:11:49.942071
+2018-12-10 19:12:26.681928
+---- EPOCH 180 EVALUATION ----
+eval mean loss: 0.603186
+eval accuracy: 0.862271
+eval avg class acc: 0.598953
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 181 ****
+2018-12-10 19:12:35.052095
+2018-12-10 19:13:11.704925
+---- EPOCH 181 EVALUATION ----
+eval mean loss: 0.594664
+eval accuracy: 0.865608
+eval avg class acc: 0.613535
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 182 ****
+2018-12-10 19:13:20.066094
+2018-12-10 19:13:56.716935
+---- EPOCH 182 EVALUATION ----
+eval mean loss: 0.574388
+eval accuracy: 0.872208
+eval avg class acc: 0.628910
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 183 ****
+2018-12-10 19:14:05.174793
+2018-12-10 19:14:41.884288
+---- EPOCH 183 EVALUATION ----
+eval mean loss: 0.547895
+eval accuracy: 0.875491
+eval avg class acc: 0.629605
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 184 ****
+2018-12-10 19:14:50.268793
+2018-12-10 19:15:27.005429
+---- EPOCH 184 EVALUATION ----
+eval mean loss: 0.528814
+eval accuracy: 0.877381
+eval avg class acc: 0.623589
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 185 ****
+2018-12-10 19:15:35.464742
+2018-12-10 19:16:12.046704
+---- EPOCH 185 EVALUATION ----
+eval mean loss: 0.601736
+eval accuracy: 0.869850
+eval avg class acc: 0.613522
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 186 ****
+2018-12-10 19:16:20.424333
+2018-12-10 19:16:57.142761
+---- EPOCH 186 EVALUATION ----
+eval mean loss: 0.584307
+eval accuracy: 0.868638
+eval avg class acc: 0.612531
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 187 ****
+2018-12-10 19:17:05.497535
+2018-12-10 19:17:42.267797
+---- EPOCH 187 EVALUATION ----
+eval mean loss: 0.598631
+eval accuracy: 0.868524
+eval avg class acc: 0.612332
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 188 ****
+2018-12-10 19:17:50.738675
+2018-12-10 19:18:27.444801
+---- EPOCH 188 EVALUATION ----
+eval mean loss: 0.596268
+eval accuracy: 0.872554
+eval avg class acc: 0.608658
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 189 ****
+2018-12-10 19:18:35.804317
+2018-12-10 19:19:12.545811
+---- EPOCH 189 EVALUATION ----
+eval mean loss: 0.544076
+eval accuracy: 0.875601
+eval avg class acc: 0.622811
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 190 ****
+2018-12-10 19:19:20.924377
+2018-12-10 19:19:57.558055
+---- EPOCH 190 EVALUATION ----
+eval mean loss: 0.556339
+eval accuracy: 0.868062
+eval avg class acc: 0.608442
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 191 ****
+2018-12-10 19:20:05.990423
+2018-12-10 19:20:42.752921
+---- EPOCH 191 EVALUATION ----
+eval mean loss: 0.586050
+eval accuracy: 0.864224
+eval avg class acc: 0.602225
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 192 ****
+2018-12-10 19:20:51.140462
+2018-12-10 19:21:27.763826
+---- EPOCH 192 EVALUATION ----
+eval mean loss: 0.609094
+eval accuracy: 0.863182
+eval avg class acc: 0.605713
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 193 ****
+2018-12-10 19:21:36.134080
+2018-12-10 19:22:12.938238
+---- EPOCH 193 EVALUATION ----
+eval mean loss: 0.593620
+eval accuracy: 0.866390
+eval avg class acc: 0.627751
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 194 ****
+2018-12-10 19:22:21.462536
+2018-12-10 19:22:58.211964
+---- EPOCH 194 EVALUATION ----
+eval mean loss: 0.556309
+eval accuracy: 0.864914
+eval avg class acc: 0.591319
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 195 ****
+2018-12-10 19:23:06.573870
+2018-12-10 19:23:43.335092
+---- EPOCH 195 EVALUATION ----
+eval mean loss: 0.531502
+eval accuracy: 0.873358
+eval avg class acc: 0.611163
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 196 ****
+2018-12-10 19:23:51.702710
+2018-12-10 19:24:28.428829
+---- EPOCH 196 EVALUATION ----
+eval mean loss: 0.576137
+eval accuracy: 0.873971
+eval avg class acc: 0.619066
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 197 ****
+2018-12-10 19:24:36.860465
+2018-12-10 19:25:13.506152
+---- EPOCH 197 EVALUATION ----
+eval mean loss: 0.529709
+eval accuracy: 0.876521
+eval avg class acc: 0.626054
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 198 ****
+2018-12-10 19:25:21.897098
+2018-12-10 19:25:58.475459
+---- EPOCH 198 EVALUATION ----
+eval mean loss: 0.553041
+eval accuracy: 0.875725
+eval avg class acc: 0.628907
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 199 ****
+2018-12-10 19:26:06.952478
+2018-12-10 19:26:43.623618
+---- EPOCH 199 EVALUATION ----
+eval mean loss: 0.595073
+eval accuracy: 0.867747
+eval avg class acc: 0.593012
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 200 ****
+2018-12-10 19:26:52.013175
+2018-12-10 19:27:28.730141
+---- EPOCH 200 EVALUATION ----
+eval mean loss: 0.577271
+eval accuracy: 0.875393
+eval avg class acc: 0.629015
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 201 ****
+2018-12-10 19:27:37.102614
+2018-12-10 19:28:13.784308
+---- EPOCH 201 EVALUATION ----
+eval mean loss: 0.563848
+eval accuracy: 0.875001
+eval avg class acc: 0.629879
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 202 ****
+2018-12-10 19:28:22.237798
+2018-12-10 19:28:58.879866
+---- EPOCH 202 EVALUATION ----
+eval mean loss: 0.573455
+eval accuracy: 0.873379
+eval avg class acc: 0.628833
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 203 ****
+2018-12-10 19:29:07.263228
+2018-12-10 19:29:44.000194
+---- EPOCH 203 EVALUATION ----
+eval mean loss: 0.595092
+eval accuracy: 0.870774
+eval avg class acc: 0.623084
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 204 ****
+2018-12-10 19:29:52.447096
+2018-12-10 19:30:29.132420
+---- EPOCH 204 EVALUATION ----
+eval mean loss: 0.588683
+eval accuracy: 0.871886
+eval avg class acc: 0.626888
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 205 ****
+2018-12-10 19:30:37.485245
+2018-12-10 19:31:14.137539
+---- EPOCH 205 EVALUATION ----
+eval mean loss: 0.619802
+eval accuracy: 0.868266
+eval avg class acc: 0.628621
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 206 ****
+2018-12-10 19:31:22.510359
+2018-12-10 19:31:59.139136
+---- EPOCH 206 EVALUATION ----
+eval mean loss: 0.591761
+eval accuracy: 0.872292
+eval avg class acc: 0.625354
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 207 ****
+2018-12-10 19:32:07.682592
+2018-12-10 19:32:44.344819
+---- EPOCH 207 EVALUATION ----
+eval mean loss: 0.575087
+eval accuracy: 0.869133
+eval avg class acc: 0.613337
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 208 ****
+2018-12-10 19:32:52.734520
+2018-12-10 19:33:29.354530
+---- EPOCH 208 EVALUATION ----
+eval mean loss: 0.588364
+eval accuracy: 0.870884
+eval avg class acc: 0.618894
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 209 ****
+2018-12-10 19:33:37.735589
+2018-12-10 19:34:14.360815
+---- EPOCH 209 EVALUATION ----
+eval mean loss: 0.575658
+eval accuracy: 0.868409
+eval avg class acc: 0.607160
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 210 ****
+2018-12-10 19:34:22.790874
+2018-12-10 19:34:59.551602
+---- EPOCH 210 EVALUATION ----
+eval mean loss: 0.569040
+eval accuracy: 0.869619
+eval avg class acc: 0.612976
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 211 ****
+2018-12-10 19:35:07.931214
+2018-12-10 19:35:44.641851
+---- EPOCH 211 EVALUATION ----
+eval mean loss: 0.572846
+eval accuracy: 0.870024
+eval avg class acc: 0.614966
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 212 ****
+2018-12-10 19:35:53.012376
+2018-12-10 19:36:29.648544
+---- EPOCH 212 EVALUATION ----
+eval mean loss: 0.568303
+eval accuracy: 0.868082
+eval avg class acc: 0.612298
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 213 ****
+2018-12-10 19:36:38.086434
+2018-12-10 19:37:14.846153
+---- EPOCH 213 EVALUATION ----
+eval mean loss: 0.550798
+eval accuracy: 0.869371
+eval avg class acc: 0.620030
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 214 ****
+2018-12-10 19:37:23.220293
+2018-12-10 19:37:59.861048
+---- EPOCH 214 EVALUATION ----
+eval mean loss: 0.598150
+eval accuracy: 0.873198
+eval avg class acc: 0.614154
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 215 ****
+2018-12-10 19:38:08.323943
+2018-12-10 19:38:45.125011
+---- EPOCH 215 EVALUATION ----
+eval mean loss: 0.587262
+eval accuracy: 0.870487
+eval avg class acc: 0.628563
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 216 ****
+2018-12-10 19:38:53.519497
+2018-12-10 19:39:30.144578
+---- EPOCH 216 EVALUATION ----
+eval mean loss: 0.614341
+eval accuracy: 0.871856
+eval avg class acc: 0.622058
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 217 ****
+2018-12-10 19:39:38.516217
+2018-12-10 19:40:15.298111
+---- EPOCH 217 EVALUATION ----
+eval mean loss: 0.623505
+eval accuracy: 0.868399
+eval avg class acc: 0.601885
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 218 ****
+2018-12-10 19:40:23.771614
+2018-12-10 19:41:00.382788
+---- EPOCH 218 EVALUATION ----
+eval mean loss: 0.615197
+eval accuracy: 0.873455
+eval avg class acc: 0.626386
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 219 ****
+2018-12-10 19:41:08.758870
+2018-12-10 19:41:45.447120
+---- EPOCH 219 EVALUATION ----
+eval mean loss: 0.634167
+eval accuracy: 0.868156
+eval avg class acc: 0.602723
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 220 ****
+2018-12-10 19:41:53.848435
+2018-12-10 19:42:30.601686
+---- EPOCH 220 EVALUATION ----
+eval mean loss: 0.585206
+eval accuracy: 0.870306
+eval avg class acc: 0.620659
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 221 ****
+2018-12-10 19:42:39.054220
+2018-12-10 19:43:15.794479
+---- EPOCH 221 EVALUATION ----
+eval mean loss: 0.581889
+eval accuracy: 0.870983
+eval avg class acc: 0.613051
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 222 ****
+2018-12-10 19:43:24.197427
+2018-12-10 19:44:00.927962
+---- EPOCH 222 EVALUATION ----
+eval mean loss: 0.589294
+eval accuracy: 0.867806
+eval avg class acc: 0.611014
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 223 ****
+2018-12-10 19:44:09.387810
+2018-12-10 19:44:46.103058
+---- EPOCH 223 EVALUATION ----
+eval mean loss: 0.594564
+eval accuracy: 0.870615
+eval avg class acc: 0.617108
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 224 ****
+2018-12-10 19:44:54.495369
+2018-12-10 19:45:31.217550
+---- EPOCH 224 EVALUATION ----
+eval mean loss: 0.580527
+eval accuracy: 0.871133
+eval avg class acc: 0.612393
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 225 ****
+2018-12-10 19:45:39.619081
+2018-12-10 19:46:16.378897
+---- EPOCH 225 EVALUATION ----
+eval mean loss: 0.586481
+eval accuracy: 0.872403
+eval avg class acc: 0.617263
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 226 ****
+2018-12-10 19:46:24.891738
+2018-12-10 19:47:01.623432
+---- EPOCH 226 EVALUATION ----
+eval mean loss: 0.605457
+eval accuracy: 0.871794
+eval avg class acc: 0.615767
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 227 ****
+2018-12-10 19:47:10.002956
+2018-12-10 19:47:46.633914
+---- EPOCH 227 EVALUATION ----
+eval mean loss: 0.600705
+eval accuracy: 0.871489
+eval avg class acc: 0.612303
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 228 ****
+2018-12-10 19:47:55.027169
+2018-12-10 19:48:31.676762
+---- EPOCH 228 EVALUATION ----
+eval mean loss: 0.592136
+eval accuracy: 0.872672
+eval avg class acc: 0.617357
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 229 ****
+2018-12-10 19:48:40.142463
+2018-12-10 19:49:16.836461
+---- EPOCH 229 EVALUATION ----
+eval mean loss: 0.629339
+eval accuracy: 0.868324
+eval avg class acc: 0.606414
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 230 ****
+2018-12-10 19:49:25.206176
+2018-12-10 19:50:01.953480
+---- EPOCH 230 EVALUATION ----
+eval mean loss: 0.594382
+eval accuracy: 0.869549
+eval avg class acc: 0.609481
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 231 ****
+2018-12-10 19:50:10.329490
+2018-12-10 19:50:47.035974
+---- EPOCH 231 EVALUATION ----
+eval mean loss: 0.599230
+eval accuracy: 0.869269
+eval avg class acc: 0.614372
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 232 ****
+2018-12-10 19:50:55.487388
+2018-12-10 19:51:32.263939
+---- EPOCH 232 EVALUATION ----
+eval mean loss: 0.621320
+eval accuracy: 0.863759
+eval avg class acc: 0.580895
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 233 ****
+2018-12-10 19:51:40.634252
+2018-12-10 19:52:17.279590
+---- EPOCH 233 EVALUATION ----
+eval mean loss: 0.592638
+eval accuracy: 0.870098
+eval avg class acc: 0.607572
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 234 ****
+2018-12-10 19:52:25.755305
+2018-12-10 19:53:02.431419
+---- EPOCH 234 EVALUATION ----
+eval mean loss: 0.584221
+eval accuracy: 0.873318
+eval avg class acc: 0.622748
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 235 ****
+2018-12-10 19:53:10.849858
+2018-12-10 19:53:47.646023
+---- EPOCH 235 EVALUATION ----
+eval mean loss: 0.584067
+eval accuracy: 0.871365
+eval avg class acc: 0.614244
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 236 ****
+2018-12-10 19:53:56.045339
+2018-12-10 19:54:32.780826
+---- EPOCH 236 EVALUATION ----
+eval mean loss: 0.601340
+eval accuracy: 0.868599
+eval avg class acc: 0.608915
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 237 ****
+2018-12-10 19:54:41.230653
+2018-12-10 19:55:18.049535
+---- EPOCH 237 EVALUATION ----
+eval mean loss: 0.585923
+eval accuracy: 0.870376
+eval avg class acc: 0.606808
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 238 ****
+2018-12-10 19:55:26.419197
+2018-12-10 19:56:03.239116
+---- EPOCH 238 EVALUATION ----
+eval mean loss: 0.581108
+eval accuracy: 0.870764
+eval avg class acc: 0.618247
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 239 ****
+2018-12-10 19:56:11.610485
+2018-12-10 19:56:48.337546
+---- EPOCH 239 EVALUATION ----
+eval mean loss: 0.592737
+eval accuracy: 0.870376
+eval avg class acc: 0.609372
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 240 ****
+2018-12-10 19:56:56.814997
+2018-12-10 19:57:33.569813
+---- EPOCH 240 EVALUATION ----
+eval mean loss: 0.600385
+eval accuracy: 0.870128
+eval avg class acc: 0.616012
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 241 ****
+2018-12-10 19:57:41.917200
+2018-12-10 19:58:18.661366
+---- EPOCH 241 EVALUATION ----
+eval mean loss: 0.601269
+eval accuracy: 0.870197
+eval avg class acc: 0.605290
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 242 ****
+2018-12-10 19:58:27.035241
+2018-12-10 19:59:03.772064
+---- EPOCH 242 EVALUATION ----
+eval mean loss: 0.584806
+eval accuracy: 0.869179
+eval avg class acc: 0.611518
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 243 ****
+2018-12-10 19:59:12.244323
+2018-12-10 19:59:49.040032
+---- EPOCH 243 EVALUATION ----
+eval mean loss: 0.595569
+eval accuracy: 0.869725
+eval avg class acc: 0.617794
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 244 ****
+2018-12-10 19:59:57.426172
+2018-12-10 20:00:34.120400
+---- EPOCH 244 EVALUATION ----
+eval mean loss: 0.614954
+eval accuracy: 0.869031
+eval avg class acc: 0.612813
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 245 ****
+2018-12-10 20:00:42.494134
+2018-12-10 20:01:19.267867
+---- EPOCH 245 EVALUATION ----
+eval mean loss: 0.596240
+eval accuracy: 0.870424
+eval avg class acc: 0.607286
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 246 ****
+2018-12-10 20:01:27.701109
+2018-12-10 20:02:04.354253
+---- EPOCH 246 EVALUATION ----
+eval mean loss: 0.584412
+eval accuracy: 0.870692
+eval avg class acc: 0.613378
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 247 ****
+2018-12-10 20:02:12.730443
+2018-12-10 20:02:49.356623
+---- EPOCH 247 EVALUATION ----
+eval mean loss: 0.591494
+eval accuracy: 0.868423
+eval avg class acc: 0.607841
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 248 ****
+2018-12-10 20:02:57.820740
+2018-12-10 20:03:34.523590
+---- EPOCH 248 EVALUATION ----
+eval mean loss: 0.576988
+eval accuracy: 0.870520
+eval avg class acc: 0.607966
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 249 ****
+2018-12-10 20:03:42.894546
+2018-12-10 20:04:19.678911
+---- EPOCH 249 EVALUATION ----
+eval mean loss: 0.605232
+eval accuracy: 0.868935
+eval avg class acc: 0.619467
+Model saved in file: log_se_ndt_segm/model.ckpt
+**** EPOCH 250 ****
+2018-12-10 20:04:28.078114
+2018-12-10 20:05:04.702145
+---- EPOCH 250 EVALUATION ----
+eval mean loss: 0.602190
+eval accuracy: 0.872249
+eval avg class acc: 0.618155
+Model saved in file: log_se_ndt_segm/model.ckpt

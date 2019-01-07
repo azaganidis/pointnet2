@@ -329,11 +329,11 @@ def eval_one_epoch(sess, ops, test_writer):
                 l = CL[i]
                 total_seen_class[l] += 1
                 total_correct_class[l] += (PV[i] == l)
-            if batch_idx==1:
-                last_cloud=np.concatenate((cur_batch_data[-1,...], np.expand_dims(pred_val[-1,...], 1)), axis=1)
-                np.savetxt('cloud_out/ct'+str(batch_idx)+'.txt', last_cloud)
-                last_cloud=np.concatenate((cur_batch_data[-1,...], np.expand_dims(cur_batch_label[-1,...], 1)), axis=1)
-                np.savetxt('cloud_out/Ct'+str(batch_idx)+'.txt', last_cloud)
+            #if batch_idx==1:
+            #    last_cloud=np.concatenate((cur_batch_data[-1,...], np.expand_dims(pred_val[-1,...], 1)), axis=1)
+            #    np.savetxt('cloud_out/ct'+str(batch_idx)+'.txt', last_cloud)
+            #    last_cloud=np.concatenate((cur_batch_data[-1,...], np.expand_dims(cur_batch_label[-1,...], 1)), axis=1)
+            #    np.savetxt('cloud_out/Ct'+str(batch_idx)+'.txt', last_cloud)
     
     log_string('eval mean loss: %f' % (loss_sum / float(batch_idx)))
     log_string('eval accuracy: %f'% (total_correct / float(total_seen)))
