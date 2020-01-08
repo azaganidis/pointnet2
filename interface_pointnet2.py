@@ -14,10 +14,16 @@ class Pointnet2Interface:
         model = importlib.import_module(MODEL_NAME) # import network module
         self.is_training= tf.placeholder_with_default(False, shape=(), name="is_training")
         self.input_data=tf.placeholder(tf.float32, shape=( None, args.input_dim[1]) , name="cloud_in")
-        data_out = resample_cloud.init_resample2(self.input_data, args.input_dim[0], 4, scale=scale)
+        data_out=self.input_data
+
+        MR = tf.placeholder_with_default([130.0], shape=(1), name="MaxRange")
+
+        data_out=tf.boolean_mask(data_out, tf.norm(data_out[:,:3], axis=-1)<MR) 
+        data_out = resample_cloud.init_resample2(data_out, args.input_dim[0], 4, scale=scale)
         data=tf.expand_dims(data_out, 0)
         pred, self.end_points= model.get_model(data, self.is_training, args.output_dim)
         pred=tf.cast(tf.argmax(pred, axis=2), tf.float32)
+        #pred=tf.cast(tf.argmax(self.end_points['cluster_out3'], axis=2), tf.float32)
         pred=tf.squeeze(pred, 0)
         self.pred=tf.concat((data_out[:,:3]*scale[0], tf.expand_dims(pred,1)), 1, name="cloud_out")
     def freeze_session(self, session, keep_var_names=None, output_names=None, clear_devices=True):

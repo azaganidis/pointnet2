@@ -149,7 +149,7 @@ def train():
             for l in losses + [total_loss]:
                 tf.summary.scalar(l.op.name, l)
 
-            correct = tf.equal(tf.argmax(pred, 2), tf.to_int64(labels_pl))
+            correct = tf.equal(tf.argmax(pred, -1), tf.to_int64(labels_pl))
             correct_sum = tf.reduce_sum(tf.cast(correct, tf.float32)) 
             accuracy = correct_sum/ float(BATCH_SIZE*NUM_POINT)
             tf.summary.scalar('accuracy', accuracy)
@@ -223,10 +223,10 @@ def train():
             sys.stdout.flush()
              
             train_one_epoch(sess, ops, train_writer)
-            eval_one_epoch(sess, ops, test_writer)
 
             # Save the variables to disk.
-            if epoch % 1 == 0:
+            if epoch % 2 == 0:
+                eval_one_epoch(sess, ops, test_writer)
                 save_path = saver.save(sess, os.path.join(LOG_DIR, "model.ckpt"))
                 log_string("Model saved in file: %s" % save_path)
 

@@ -1,5 +1,49 @@
 // input: radius (1), nsample (1), xyz1 (b,n,c), xyz2 (b,m,c)
 // output: idx (b,m,nsample), pts_cnt (b,m)
+__global__ void knn_gpu(int b, int n, int c, int m, int nsample, const float *xyz1, const float *xyz2, int *idx, float *dist) {
+    int batch_index = blockIdx.x;
+    xyz1 += n*c*batch_index;
+    xyz2 += m*c*batch_index;
+    idx += m*nsample*batch_index;
+    dist += m*nsample*batch_index;
+    int index = threadIdx.x;
+    int stride = blockDim.x;
+    for (int j=index;j<m;j+=stride) {
+        for(int nI=0;nI<nsample;nI++)
+        {
+            dist[j*nsample+nI]=-1;
+            idx[j*nsample+nI]=-1;
+        }
+        for (int k=0;k<n;++k) {
+            float d=0;
+            for(int ci=0;ci<c;ci++)
+                d+=(xyz2[j*c+ci]-xyz1[k*c+ci])*(xyz2[j*c+ci]-xyz1[k*c+ci]);
+    	    d=sqrtf(d);
+            if(d<dist[j*nsample+nsample-1]||dist[j*nsample+nsample-1]==-1)
+            {
+                float d_=d;
+                int k_=k;
+                bool placed=false;
+                for(int nI=0;nI<nsample;nI++)
+                {
+                    if(placed || d_<=dist[j*nsample+nI]||dist[j*nsample+nI]==-1)
+                    {
+                        float d_tmp=dist[j*nsample+nI];
+                        dist[j*nsample+nI]=d_;
+                        d_=d_tmp;
+                        int k_tmp=idx[j*nsample+nI];
+                        idx[j*nsample+nI]=k_;
+                        k_=k_tmp;
+                        placed=true;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// input: radius (1), nsample (1), xyz1 (b,n,c), xyz2 (b,m,c)
+// output: idx (b,m,nsample), pts_cnt (b,m)
 __global__ void query_ball_point_gpu(int b, int n, int c, int m, float radius, int nsample, const float *xyz1, const float *xyz2, int *idx, int *pts_cnt) {
     int batch_index = blockIdx.x;
     xyz1 += n*c*batch_index;
@@ -119,20 +163,25 @@ __global__ void selection_sort_gpu(int b, int n, int m, int k, const float *dist
     }
 }
 
+void knnLauncher(int b, int n, int c, int m, int nsample, const float *xyz1, const float *xyz2, int *idx, float *dist) 
+{
+    knn_gpu<<<b,1024>>>(b,n,c,m,nsample,xyz1,xyz2,idx,dist);
+    //cudaDeviceSynchronize();
+}
 void queryBallPointLauncher(int b, int n, int c, int m, float radius, int nsample, const float *xyz1, const float *xyz2, int *idx, int *pts_cnt) {
-    query_ball_point_gpu<<<b,256>>>(b,n,c,m,radius,nsample,xyz1,xyz2,idx,pts_cnt);
+    query_ball_point_gpu<<<b,1024>>>(b,n,c,m,radius,nsample,xyz1,xyz2,idx,pts_cnt);
     //cudaDeviceSynchronize();
 }
 void selectionSortLauncher(int b, int n, int m, int k, const float *dist, int *outi, float *out) {
-    selection_sort_gpu<<<b,256>>>(b,n,m,k,dist,outi,out); 
+    selection_sort_gpu<<<b,1024>>>(b,n,m,k,dist,outi,out); 
     //cudaDeviceSynchronize();
 }
 void groupPointLauncher(int b, int n, int c, int m, int nsample, const float *points, const int *idx, float *out){
-    group_point_gpu<<<b,256>>>(b,n,c,m,nsample,points,idx,out);
+    group_point_gpu<<<b,1024>>>(b,n,c,m,nsample,points,idx,out);
     //cudaDeviceSynchronize();
 }
 void groupPointGradLauncher(int b, int n, int c, int m, int nsample, const float *grad_out, const int *idx, float *grad_points){
-    group_point_grad_gpu<<<b,256>>>(b,n,c,m,nsample,grad_out,idx,grad_points);
+    group_point_grad_gpu<<<b,1024>>>(b,n,c,m,nsample,grad_out,idx,grad_points);
     //group_point_grad_gpu<<<1,1>>>(b,n,c,m,nsample,grad_out,idx,grad_points);
     //cudaDeviceSynchronize();
 }

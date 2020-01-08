@@ -31,7 +31,7 @@ p12
 F0.7
 sS'log_dir'
 p13
-S'log_se_ndt_segm'
+S'log_se_ndt_segm/'
 p14
 sS'input_dim'
 p15

@@ -185,8 +185,6 @@ class ThreeNNOp : public OpKernel {
 };
 REGISTER_KERNEL_BUILDER(Name("ThreeNN").Device(DEVICE_CPU), ThreeNNOp);
 
-
-
 class ThreeInterpolateOp: public OpKernel{
     public:
         explicit ThreeInterpolateOp(OpKernelConstruction * context):OpKernel(context){}

@@ -223,10 +223,10 @@ def train():
             sys.stdout.flush()
              
             train_one_epoch(sess, ops, train_writer)
-            eval_one_epoch(sess, ops, test_writer)
 
             # Save the variables to disk.
-            if epoch % 1 == 0:
+            if epoch % 2 == 0:
+                eval_one_epoch(sess, ops, test_writer)
                 save_path = saver.save(sess, os.path.join(LOG_DIR, "model.ckpt"))
                 log_string("Model saved in file: %s" % save_path)
 

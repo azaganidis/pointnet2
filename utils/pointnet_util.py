@@ -13,7 +13,7 @@ sys.path.append(os.path.join(ROOT_DIR, 'tf_ops/sampling'))
 sys.path.append(os.path.join(ROOT_DIR, 'tf_ops/grouping'))
 sys.path.append(os.path.join(ROOT_DIR, 'tf_ops/3d_interpolation'))
 from tf_sampling import farthest_point_sample, gather_point
-from tf_grouping import query_ball_point, group_point, knn_point
+from tf_grouping import query_ball_point, group_point, knn_point, kNearest
 from tf_interpolate import three_nn, three_interpolate
 import tensorflow as tf
 import numpy as np
@@ -38,7 +38,8 @@ def sample_and_group(npoint, radius, nsample, xyz, points, knn=False, use_xyz=Tr
     '''
     new_xyz = gather_point(xyz, farthest_point_sample(npoint, xyz)) # (batch_size, npoint, 3)
     if knn:
-        _,idx = knn_point(nsample, xyz, new_xyz)
+        #_,idx = knn_point(nsample, xyz, new_xyz)
+        idx,_ = kNearest(xyz, new_xyz,nsample)
     else:
         idx, pts_cnt = query_ball_point(radius, nsample, xyz, new_xyz)
     grouped_xyz = group_point(xyz, idx) # (batch_size, npoint, nsample, 3)
@@ -124,9 +125,9 @@ def pointnet_sa_module(xyz, points, npoint, radius, nsample, mlp, mlp2, group_al
 
         # Pooling in Local Regions
         if pooling=='max':
-            new_points = tf.reduce_max(new_points, axis=[2], keep_dims=True, name='maxpool')
+            new_points = tf.reduce_max(new_points, axis=[2], keepdims=True, name='maxpool')
         elif pooling=='avg':
-            new_points = tf.reduce_mean(new_points, axis=[2], keep_dims=True, name='avgpool')
+            new_points = tf.reduce_mean(new_points, axis=[2], keepdims=True, name='avgpool')
         elif pooling=='weighted_avg':
             with tf.variable_scope('weighted_avg'):
                 dists = tf.norm(grouped_xyz,axis=-1,ord=2,keep_dims=True)
@@ -226,7 +227,7 @@ def pointnet_fp_module(xyz1, xyz2, points1, points2, mlp, is_training, bn_decay,
         #dist, idx = three_nn(xyz1, xyz2)
         dist, idx = three_nn_gpu(xyz1, xyz2)
         dist = tf.maximum(dist, 1e-10)
-        norm = tf.reduce_sum((1.0/dist),axis=2,keep_dims=True)
+        norm = tf.reduce_sum((1.0/dist),axis=2,keepdims=True)
         norm = tf.tile(norm,[1,1,3])
         weight = (1.0/dist) / norm
         interpolated_points = three_interpolate(points2, idx, weight)

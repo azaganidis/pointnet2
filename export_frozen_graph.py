@@ -29,6 +29,8 @@ def main():
             # Create a PointNet model with the saved arguments
             saved_args.batch_size=args.batch_size
             saved_args.model=args.model
+         
+            saved_args.input_dim[0]=tf.placeholder_with_default([15000], shape=(1), name="NumSample")[0]
             model = Model(saved_args)
             sess=tf.InteractiveSession()
             # Add all the variables to the list of variables to be saved
@@ -36,7 +38,7 @@ def main():
             # restore the model
             saver.restore(sess, os.path.join(args.log_dir, 'model.ckpt'))
             # save frozen graph in file for use in C++ 
-            tf.train.write_graph(model.freeze_session(sess, keep_var_names=["cloud_in"], output_names=["cloud_out", "layer3/points_out"]), 'deploy/build/models/', 'pointnet.pb', as_text=False)
+            tf.train.write_graph(model.freeze_session(sess, keep_var_names=["cloud_in", "NumSample"], output_names=["cloud_out", "layer3/points_out", "gfeat"]), 'deploy/build/models/', 'pointnet.pb', as_text=False)
             print "Frozen graph saved for deployment"
 
 if __name__ == '__main__':
